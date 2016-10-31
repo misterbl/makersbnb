@@ -1,2 +1,50 @@
 <h1><%= title %></h1>
-<p>Welcome to <%= title %></p>
+
+<form action="/users/create" method="post">
+  <label>
+    Username:
+    <input name="username" />
+  </label>
+  <input type="submit" value="Create user" />
+</form>
+
+<ul>
+  <% users.forEach(function(user) { %>
+    <li>
+      <div>
+        <%= user.username %>
+      </div>
+
+      <form action="/users/<%= user.id %>/listings/create" method="post">
+        <label>
+          Name:
+          <input name="name" />
+        </label>
+        <label>
+          Description:
+          <textarea name="description"></textarea>
+        </label>
+        <label>
+          Price:
+          <input type="number" name="price" />
+        </label>
+        <input type="submit" value="Create listing" />
+      </form>
+
+      <% if (user.Listings) { %>
+        <ul>
+          <% user.Listings.forEach(function(listing) { %>
+            <li>
+              <div>
+                <%= listing.name %> - <%= listing.price %>
+              </div>
+              <div>
+                <%= listing.description %>
+              </div>
+            </li>
+          <% }) %>
+        </ul>
+      <% } %>
+    </li>
+  <% }) %>
+</ul>
