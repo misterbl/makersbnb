@@ -1,50 +1,59 @@
-<h1><%= title %></h1>
-
-<form action="/users/create" method="post">
-  <label>
-    Username:
-    <input name="username" />
-  </label>
-  <input type="submit" value="Create user" />
-</form>
-
-<ul>
-  <% users.forEach(function(user) { %>
-    <li>
-      <div>
-        <%= user.username %>
-      </div>
-
-      <form action="/users/<%= user.id %>/listings/create" method="post">
-        <label>
-          Name:
-          <input name="name" />
-        </label>
-        <label>
-          Description:
-          <textarea name="description"></textarea>
-        </label>
-        <label>
-          Price:
-          <input type="number" name="price" />
-        </label>
-        <input type="submit" value="Create listing" />
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MakersBnB</title>
+</head>
+  <body>
+    <div>
+      <h1>Please Login</h1>
+      <form action="/user" method="post">
+          <input placeholder="Username" name='username'/>
+          <input placeholder="Password" name='password'/>
+        <input class="submit" type='submit' value='Login'/>
       </form>
+    </div>
 
-      <% if (user.Listings) { %>
-        <ul>
-          <% user.Listings.forEach(function(listing) { %>
-            <li>
-              <div>
-                <%= listing.name %> - <%= listing.price %>
-              </div>
-              <div>
-                <%= listing.description %>
-              </div>
-            </li>
-          <% }) %>
-        </ul>
-      <% } %>
-    </li>
-  <% }) %>
-</ul>
+<h1>Listings</h1>
+  <div class="">
+    <ul>
+      <li>Listing 1
+        <div class="title">
+          <p>Amazing flat in London</p>
+        </div>
+        <div class="description">
+          <p>Three bedrooms.</p>
+        </div>
+        <div class="price">
+          <p>£50/night</p>
+        </div>
+        <div class="image">
+          <img src="">
+        </div>
+      </li>
+      <li>Listing 2</li>
+      <li>Listing 3</li>
+    </ul>
+  </div> -->
+
+  <h1>Create new acount</h1>
+  <form action="/user/create" method="post">
+   <input placeholder="UserName" name="username" />
+   <input placeholder="Email" name="email" />
+   <input placeholder="Firstname" name="firstname" />
+   <input placeholder="Lastname" name="lastname" />
+   <input type="submit" value="Create user" />
+  </form>
+
+      <h1> Add a new listing </h1>
+       <form action="/new_listing" method="post">
+           <input placeholder="Name" name="name" />
+           <textarea placeholder="Description" name="description"></textarea>
+           <input placeholder="Price per night" type="number" name="price" />
+           <input placeholder="Image" name="image" />
+         <input type="submit" value="Create listing" />
+       </form>
+
+      
+</body>
+
+</html>
