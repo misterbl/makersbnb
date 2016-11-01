@@ -2,9 +2,10 @@ var express = require('express');
 var router = express.Router();
 var models = require('../models');
 var Listing = require('../models').Listing;
-
+var session = require('express-session');
 /* GET home page/listings. */
 router.get('/', function(req, res, next) {
+  // sess=req.session;
   res.render('index');
 });
 
@@ -14,8 +15,10 @@ router.post('/user/create', function(req, res) {
     email: req.body.email,
     firstname: req.body.firstname,
     lastname: req.body.lastname,
+    password: req.body.password
   });
-    res.redirect('/');
+    res.render('admin');
+
 });
 
 router.get('/new_listing', function(req, res) {
@@ -34,5 +37,13 @@ router.post('/new_listing', function(req, res) {
 
 });
 
+router.get('/admin',function(req,res){
+  sess = req.session;
+  sess.email;
+    res.render('admin');
+
+
+
+});
 
 module.exports = router;
