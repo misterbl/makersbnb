@@ -28,7 +28,9 @@ $(document).ready(function(){
     <INPUT TYPE="submit" VALUE="Logout">
     </FORM>
   Welcome back <%= user.firstname %>. This is your admin page:
-
+<% listings.forEach(function(listing) { %>
+<%= listing.name %>
+<% }); %>
 
         <h1> Add a new listing </h1>
          <form action="/new_listing" method="post">
