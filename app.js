@@ -41,7 +41,12 @@ app.get('/',function(req,res){
     res.redirect('/admin');
   }
   else {
-    res.render('index.ejs');
+    var allListings;
+    models.Listing.findAll({}).then(function(listings){
+      allListings = listings;
+      res.render('index.ejs', {allListings: allListings});
+      console.log(allListings);
+    });
   }
 });
 
