@@ -38,7 +38,7 @@ router.post('/new_listing', function(req, res) {
   var user;
   models.User.find({ where: { email: sess.email } }).then(function(user){
     var listing = models.Listing.create({
-    UserId: user.id,
+    user_id: user.id,
     name: req.body.name,
     description: req.body.description,
     price: req.body.price,
@@ -51,12 +51,11 @@ router.post('/new_listing', function(req, res) {
 });
 
 router.get('/admin',function(req,res){
-  var user;
-  models.User.find({ where: { email: sess.email } }).then(function(user){res.render('admin', {user: user});});
-
   sess = req.session;
   sess.email;
-
+  var user;
+  models.User.find({ where: { email: sess.email } }).then(function(user) {
+    res.render('admin', {user: user});});
 
 });
 
