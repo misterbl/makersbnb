@@ -8,7 +8,7 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-        Listing.belongsTo(models.User);
+        Listing.belongsTo(models.User, { foreignKey: 'user_id' });
       }
     }
   });

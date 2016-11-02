@@ -5,11 +5,14 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+var models = require('./models');
+var User = require('./models').User;
 var index = require('./routes/index');
 var users = require('./routes/users');
-
+var validator = require('validator');
 var app = express();
+var session = require('express-session');
+var validator = require('validator');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -22,20 +25,46 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-// enable ejs layouts
-app.use(expressLayouts);
-
+app.use(session({secret: 'ssshhhhh'}));
+var sess;
 app.use('/', index);
 app.use('/users', users);
 
-// catch 404 and forward to error handler
+app.get('/',function(req,res){
+  sess = req.session;
+  //Session set when user Request our app via URL
+  if(sess.email) {
+    /*
+    * This line check Session existence.
+    * If it existed will do some action.
+    */
+    res.redirect('/admin');
+  }
+  else {
+    res.render('index.ejs');
+  }
+});
+
+app.get('/logout',function(req,res){
+  req.session.destroy(function(err) {
+    if(err) {
+      console.log(err);
+    } else {
+      res.redirect('/');
+    }
+  });
+});
+
+
+app.use(expressLayouts);
+
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
 
+app.use(session(sess));
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development

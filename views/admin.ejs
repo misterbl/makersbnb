@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MakersBnB</title>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    var email,pass;
+    $("#submit").click(function(){
+        email=$("#email").val();
+        pass=$("#password").val();
+        /*
+        * Perform some validation here.
+        */
+        $.post("http://localhost:3000/login",{email:email,pass:pass},function(data){
+            if(data==='done')
+            {
+                window.location.href="/admin";
+            }
+        });
+    });
+});
+</script>
+
+</head>
+  <body>
+    <FORM METHOD="LINK" ACTION="/logout">
+    <INPUT TYPE="submit" VALUE="Logout">
+    </FORM>
+    this is your admin page
+
+    <h1> Add a new listing </h1>
+     <form action="/new_listing" method="post">
+         <input placeholder="Name" name="name" />
+         <textarea placeholder="Description" name="description"></textarea>
+         <input placeholder="Price per night" type="number" name="price" />
+         <input placeholder="Image" name="image" />
+       <input type="submit" value="Create listing" />
+     </form>
+
+
+
+  </body>
+  </html>
