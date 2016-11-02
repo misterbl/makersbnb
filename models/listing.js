@@ -5,13 +5,13 @@ module.exports = function(sequelize, DataTypes) {
     description: DataTypes.TEXT,
     price: DataTypes.INTEGER,
     image: DataTypes.STRING
+  },
+  {
+    classMethods: {
+      associate: function(models) {
+        Listing.belongsTo(models.User, { foreignKey: 'user_id' });
+      }
+    }
   });
-  // ,{
-  //   // classMethods: {
-  //     associate: function(models) {
-  //       Listing.belongsTo(models.User, { foreignKey: 'user_id' });
-  //     }
-  //   }
-  // });
   return Listing;
 };
