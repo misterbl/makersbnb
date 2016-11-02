@@ -38,25 +38,23 @@ $(document).ready(function(){
 
 <h1>Listings</h1>
   <div class="">
-    <ul>
-      <li>Listing 1
+      <% allListings.forEach(function(listing){ %>
+ <article>
         <div class="title">
-          <p>Amazing flat in London</p>
+          <h2><%= listing.dataValues.name %></h2>
         </div>
         <div class="description">
-          <p>Three bedrooms.</p>
+          <p><%= listing.dataValues.description %></p>
         </div>
         <div class="price">
-          <p>£50/night</p>
+          <p>£<%= listing.dataValues.price %>/night</p>
         </div>
         <div class="image">
-          <img src="">
+          <img src=<%= listing.dataValues.image %>>
         </div>
-      </li>
-      <li>Listing 2</li>
-      <li>Listing 3</li>
-    </ul>
-  </div> -->
+      <% }); %>
+  </article>
+  </div>
 
   <h1>Create new acount</h1>
   <form action="/user/create" method="post">
