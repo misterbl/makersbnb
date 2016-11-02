@@ -58,10 +58,7 @@ router.get('/admin',function(req,res){
   models.User.find({ where: { email: sess.email } }).then(function(user) {
   models.Listing.findAll({ where: { user_id: user.id } }).then(function(listings) {
     res.render('admin', {user: user, listings: listings});});
-
   });
-
-
 });
 
 module.exports = router;

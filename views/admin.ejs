@@ -21,15 +21,17 @@ $(document).ready(function(){
     });
 });
 </script>
-
+<% include ./partials/header.ejs %>
 </head>
   <body>
-    <FORM METHOD="LINK" ACTION="/logout">
-    <INPUT TYPE="submit" VALUE="Logout">
-    </FORM>
+
   Welcome back <%= user.firstname %>. This is your admin page:
 <% listings.forEach(function(listing) { %>
 <%= listing.name %>
+<%= listing.description %>
+<%= listing.price %>
+ <img src=<%= listing.image %>/>
+
 <% }); %>
 
         <h1> Add a new listing </h1>
