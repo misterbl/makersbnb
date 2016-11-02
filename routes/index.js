@@ -4,10 +4,6 @@ var models = require('../models');
 var Listing = require('../models').Listing;
 var session = require('express-session');
 /* GET home page/listings. */
-router.get('/', function(req, res, next) {
-  // sess=req.session;
-  res.render('index');
-});
 
 router.post('/user/create', function(req, res) {
     models.User.create({
@@ -19,6 +15,17 @@ router.post('/user/create', function(req, res) {
   });
     res.render('admin');
 
+});
+router.post('/login',function(req,res){
+    return models.User.count({ where: { email: req.body.email } && { password: req.body.password } })
+      .then(count => {
+        if (count !== 0) {
+          sess = req.session;
+          sess.email=req.body.email;
+          res.redirect('/admin');
+        }
+        res.render('login_error');
+    });
 });
 
 router.get('/new_listing', function(req, res) {
@@ -41,8 +48,6 @@ router.get('/admin',function(req,res){
   sess = req.session;
   sess.email;
     res.render('admin');
-
-
 
 });
 
