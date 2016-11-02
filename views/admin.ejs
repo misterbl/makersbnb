@@ -21,11 +21,24 @@ $(document).ready(function(){
     });
 });
 </script>
+
 </head>
   <body>
     <FORM METHOD="LINK" ACTION="/logout">
     <INPUT TYPE="submit" VALUE="Logout">
     </FORM>
     this is your admin page
+
+    <h1> Add a new listing </h1>
+     <form action="/new_listing" method="post">
+         <input placeholder="Name" name="name" />
+         <textarea placeholder="Description" name="description"></textarea>
+         <input placeholder="Price per night" type="number" name="price" />
+         <input placeholder="Image" name="image" />
+       <input type="submit" value="Create listing" />
+     </form>
+
+
+
   </body>
   </html>

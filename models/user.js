@@ -6,10 +6,12 @@ module.exports = function(sequelize, DataTypes) {
     firstname: DataTypes.STRING,
     lastname: DataTypes.STRING,
     password: DataTypes.STRING
-  }, {
+  },
+
+  {
     classMethods: {
       associate: function(models) {
-        User.hasMany(models.Listing);
+        User.hasMany(models.Listing, { foreignKey: 'user_id'});
       }
     }
   });
