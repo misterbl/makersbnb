@@ -35,12 +35,16 @@ router.get('/new_listing', function(req, res) {
 });
 
 router.post('/new_listing', function(req, res) {
+  var user;
+  models.User.find({ where: { email: sess.email } }).then(function(user){
     var listing = models.Listing.create({
+    UserId: user.id,
     name: req.body.name,
     description: req.body.description,
     price: req.body.price,
     image: req.body.image,
   });
+});
   // var user = models.User.findAll({ where: { email: sess.email }})
   // user.listings.push(listing);
   res.redirect('/admin');
@@ -48,11 +52,11 @@ router.post('/new_listing', function(req, res) {
 
 router.get('/admin',function(req,res){
   var user;
-  console.log(models.User.findAll({ where: { email: sess.email } }).then(function(user){return user;}));
+  models.User.find({ where: { email: sess.email } }).then(function(user){res.render('admin', {user: user});});
 
   sess = req.session;
   sess.email;
-    res.render('admin', {user: user});
+
 
 });
 
