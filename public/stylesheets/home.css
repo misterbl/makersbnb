@@ -1,0 +1,19 @@
+.main-content {
+  width: 20%;
+  height: 100%;
+  border-color: #bcb2b2;
+}
+
+.content-left {
+  float: left;
+}
+
+.content-right {
+  float: right;
+  border-color: #bcb2b2;
+}
+
+.quote {
+  color: red;
+  font-size: 3em;
+}
