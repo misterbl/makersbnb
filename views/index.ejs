@@ -38,7 +38,7 @@
 <h1>Listings</h1>
 <div class="">
   <% allListings.forEach(function(listing){ %>
-    <a href="/listings/view_<%= listing.id %>">
+    <a href="/listings/view/<%= listing.id %>">
     <article>
       <div class="title">
         <h2><%= listing.dataValues.name %></h2>
