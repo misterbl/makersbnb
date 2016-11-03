@@ -6,7 +6,7 @@ var session = require('express-session');
 
 
 router.get('/home', function(req, res) {
-  res.send('HOMEPAGE YA');
+  res.render('home');
 });
 
 // router.post('/user/create', function(req, res) {
