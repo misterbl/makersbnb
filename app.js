@@ -12,7 +12,6 @@ var users = require('./routes/users');
 var validator = require('validator');
 var app = express();
 var session = require('express-session');
-var validator = require('validator');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
