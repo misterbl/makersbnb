@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <title>MakersBnB</title>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script>
@@ -22,18 +21,55 @@
       });
   });
   </script>
-  <% include ./partials/header.ejs %>
   </head>
 
   <body>
+    <% include ./partials/header.ejs %>
     <article class="main-content">
       <div class="content-left">
-        <h1>Prepare to</h1><br />
-        <h1>be amazed.</h1>
+        <h1>Prepare to</h1>
+        <h1>Be amazed</h1>
       </div>
       <div class="content-right">
+        <div class="showcase-listing1">
 
+        </div>
       </div>
     </article>
   </body>
 </html>
+
+<style>
+
+h1 {
+  font-style: italic;
+  font-weight: 400;
+  font-size: 64px;
+}
+
+.main-content {
+  display: flex;
+  margin: 50px;
+  margin-bottom: 5px;
+  margin-left: 120px;
+  margin-right: 120px;
+  padding: 0px;
+  height: 500px;
+}
+
+.content-left {
+  padding: 10px;
+  margin: 10px;
+  width: 60%;
+}
+
+.content-right {
+  padding: 10px;
+  margin: 10px;
+  width: 40%;
+  border-left-style: solid;
+  border-width: 1px;
+  border-color: #c1c1c1;
+}
+
+</style>

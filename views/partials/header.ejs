@@ -1,8 +1,44 @@
 <!DOCTYPE html>
 <html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,800i" rel="stylesheet">
+
+
+<div class="navbar">
+  <a href='/'><img src="https://s16.postimg.org/7x25s7vyd/logo.png"
+    alt="World Wide Web Consortium Home"
+    width="42" height="42" border="0" /></a>
+    <% if(sess.email === undefined) { %>
+      <div class="nav-buttons">
+        <form action="/listings">
+          <input id="nav-button" type="submit" value="Listings" />
+        </form>
+        <form action="/user/new">
+          <input id="nav-button" type="submit" value="Sign up" />
+        </form>
+        <form action="/login">
+          <input id="nav-button" type="submit" value="Sign in" />
+        </form>
+      </div>
+    <% } %>
+    <% if(sess.email !== undefined) { %>
+      <div class="nav-buttons">
+        <form action="/listings/new">
+          <input id="nav-button" type="submit" value="Become a host!" />
+        </form>
+        <form action="/listings">
+          <input id="nav-button" type="submit" value="View listings" />
+        </form>
+        <form action="/user">
+          <input id="nav-button" type="submit" value="My Account" />
+        </form>
+        <form action="/logout">
+          <input id="nav-button" type="submit" value="Sign out" />
+        </form>
+      </div>
+    <% } %>
+  </div>
+</html>
 
 <style>
 
@@ -53,83 +89,3 @@ input#nav-button:hover {
 
 
 </style>
-
-<div class="navbar">
-  <a href='/'><img src="https://s16.postimg.org/7x25s7vyd/logo.png"
-    alt="World Wide Web Consortium Home"
-    width="42" height="42" border="0" /></a>
-    <% if(sess.email === undefined) { %>
-      <div class="nav-buttons">
-        <form action="/listings">
-          <input id="nav-button" type="submit" value="Listings" />
-        </form>
-        <form action="/user/new">
-          <input id="nav-button" type="submit" value="Sign up" />
-        </form>
-        <form action="/login">
-          <input id="nav-button" type="submit" value="Sign in" />
-        </form>
-      </div>
-    <% } %>
-    <% console.log(sess.email) %>
-    <% if(sess.email !== undefined) { %>
-      <div class="nav-buttons">
-        <form action="/listings/new">
-          <input id="nav-button" type="submit" value="Become a host!" />
-        </form>
-        <form action="/listings">
-          <input id="nav-button" type="submit" value="View listings" />
-        </form>
-        <form action="/user">
-          <input id="nav-button" type="submit" value="My Account" />
-        </form>
-        <form action="/logout">
-          <input id="nav-button" type="submit" value="Sign out" />
-        </form>
-      </div>
-    <% } %>
-  </div>
-</html>
-
-
-
-
-<!--
-
-<div data-role="main" class="ui-content">
-  <a href="#myPopup" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all ui-icon-check ui-btn-icon-left">Login</a>
-
-  <div data-role="popup" id="myPopup" class="ui-content" style="min-width:250px;">
-    <form method="post" action="/login">
-      <div>
-        <h3>Sign in information</h3>
-        <label for="usrnm" class="ui-hidden-accessible">Username:</label>
-        <input type="text" name="email" id="usrnm" placeholder="Email">
-        <label for="pswd" class="ui-hidden-accessible">Password:</label>
-        <input type="password" name="password" id="pswd" placeholder="Password">
-        <label for="log">Keep me logged in</label>
-        <input type="checkbox" name="login" id="log" value="1" data-mini="true">
-        <input type="submit" data-inline="true" value="Log in">
-      </div>
-    </form>
-  </div>
-</div>
-
-<div data-role="main" class="ui-content">
-  <a href="#myPopup" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all ui-icon-check ui-btn-icon-left">Sign up</a>
-
-  <div data-role="popup" id="myPopup" class="ui-content" style="min-width:250px;">
-    <form method="post" action="demoform.asp">
-      <div>
-        <h3>Sign up information</h3>
-        <label for="usrnm" class="ui-hidden-accessible">Username:</label>
-        <input type="text" name="user" id="usrnm" placeholder="Username">
-        <label for="pswd" class="ui-hidden-accessible">Password:</label>
-        <input type="password" name="passw" id="pswd" placeholder="Password">
-        <label for="log">Keep me logged in</label>
-        <input type="checkbox" name="login" id="log" value="1" data-mini="true">
-        <input type="submit" data-inline="true" value="Log in">
-      </div>
-    </form>
-  </div>
-</div> -->

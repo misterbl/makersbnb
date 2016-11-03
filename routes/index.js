@@ -7,7 +7,6 @@ var session = require('express-session');
 
 router.get('/home', function(req, res) {
   var sess = req.session;
-  console.log(sess.email);
   res.render('home', {
     sess: sess
   });

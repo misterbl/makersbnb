@@ -12,7 +12,6 @@ router.get('/', function(req, res) {
   models.Listing.findAll({}).then(function(listings){
     allListings = listings;
     res.render('index.ejs', {allListings: allListings});
-    console.log(allListings);
   });
 });
 
