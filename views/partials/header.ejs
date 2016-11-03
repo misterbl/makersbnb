@@ -7,6 +7,36 @@
 
 <style>
 
+body {
+  margin: 8px;
+  position: relative;
+}
+
+.navbar {
+  position: absolute;
+  right: 0px;
+  left: 0px;
+  top: 0px;
+  display: flex;
+
+  height: 42px;
+  width: 100%;
+}
+
+div.nav-buttons {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+}
+
+form {
+  float: right;
+}
+
+input {
+  height: 42px;
+  background-color: white;
+}
 
 
 </style>
@@ -15,31 +45,32 @@
   <a href='/'><img src="https://s16.postimg.org/7x25s7vyd/logo.png"
     alt="World Wide Web Consortium Home"
     width="42" height="42" border="0" /></a>
-    <% if(sess !== undefined) { %>
+    <% if(sess.email === undefined) { %>
       <div class="nav-buttons">
-        <form action="/listings" id="nav-buttons">
+        <form action="/listings" id="nav-button">
           <input type="submit" value="Listings" />
         </form>
-        <form action="/user/create" id="nav-buttons">
+        <form action="/user/new" id="nav-button">
           <input type="submit" value="Sign up" />
         </form>
-        <form action="/login" id="nav-buttons">
+        <form action="/login" id="nav-button">
           <input type="submit" value="Sign in" />
         </form>
       </div>
     <% } %>
-    <% if(sess === undefined) { %>
+    <% console.log(sess.email) %>
+    <% if(sess.email !== undefined) { %>
       <div class="nav-buttons">
-        <form action="/listings/new" id="nav-buttons">
+        <form action="/listings/new" id="nav-button">
           <input type="submit" value="Become a host!" />
         </form>
-        <form action="/listings" id="nav-buttons">
+        <form action="/listings" id="nav-button">
           <input type="submit" value="View listings" />
         </form>
-        <form action="/user" id="nav-buttons">
+        <form action="/user" id="nav-button">
           <input type="submit" value="My Account" />
         </form>
-        <form action="/logout" id="nav-buttons">
+        <form action="/logout" id="nav-button">
           <input type="submit" value="Sign out" />
         </form>
       </div>

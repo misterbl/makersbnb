@@ -13,6 +13,11 @@ router.get('/home', function(req, res) {
   });
 });
 
+router.get('/login', function(req, res) {
+  sess = req.session;
+  res.render('login')
+});
+
 router.post('/login',function(req,res){
   var sess = req.session;
     return models.User.count({ where: { email: req.body.email } && { password: req.body.password } })
