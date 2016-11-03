@@ -65,7 +65,7 @@ router.post('/new_listing', function(req, res) {
       image: req.body.image,
     });
   });
-  res.redirect('/admin');
+  res.redirect('/user');
 });
 
 module.exports = router;
