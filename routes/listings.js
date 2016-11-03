@@ -10,7 +10,7 @@ router.get('/', function(req, res) {
   var allListings;
   models.Listing.findAll({}).then(function(listings){
     allListings = listings;
-    res.render('index.ejs', {allListings: allListings});
+    res.render('index.ejs', {allListings: allListings, sess: sess});
   });
 });
 
