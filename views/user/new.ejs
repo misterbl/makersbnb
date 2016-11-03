@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sign up</title>
+  </head>
+  <body>
+    <% include ../partials/header.ejs %>
+
+    <form action="/user/new" method="post">
+      <input placeholder="UserName" name="username" />
+      <input placeholder="Email" name="email" />
+      <input placeholder="Firstname" name="firstname" />
+      <input placeholder="Lastname" name="lastname" />
+      <input placeholder="Password" name="password" />
+      <input class="submit" type="submit" value="Create user" />
+    </form>
+
+  </body>
+</html>

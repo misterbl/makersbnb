@@ -1,50 +1,93 @@
 <!DOCTYPE html>
 <html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="../jquery/jquery.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-<script src="../jquery/interface.js"></script>
-<!-- <script src="../src/makerbnb.js"></script> -->
 <meta charset="utf-8">
+
 <style>
 
-ul #menu{
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: red;
+body {
+  margin: 42px;
+  padding: 5px;
+  font-family: 'Open Sans', sans-serif;
 }
 
-li {
-    float: left;
+.navbar {
+  position: absolute;
+  margin-top: -1px;
+  margin-left: -1px;
+  right: 0px;
+  left: 0px;
+  top: 0px;
+  display: flex;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: #c1c1c1;
+  height: 42px;
+  width: 100%;
 }
 
-li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
+div.nav-buttons {
+  position: absolute;
+  right: 0px;
+  top: 0px;
 }
 
-li a:hover:not(.active) {
-    background-color: #111;
+form {
+  float: right;
 }
 
-.active {
-    background-color: #4CAF50;
+input {
+  border-style: none;
 }
+
+input#nav-button {
+  background-color: white;
+  height: 42px;
+  width: 100px;
+}
+
+input#nav-button:hover {
+  background-color: #e5e5e5;
+}
+
+
 </style>
-  <div class="navbar">
-    <a href='/'><img src="https://s16.postimg.org/7x25s7vyd/logo.png"
-      alt="World Wide Web Consortium Home"
-      width="42" height="42" border="0" /></a>
-    <ul id="menu">
-      <li><a class="active" href="/">Home</a></li>
-      <li><a href="'/user'">Account</a></li>
-      <li><a href="/logout">Logout</a></li>
-    </ul>
+
+<div class="navbar">
+  <a href='/'><img src="https://s16.postimg.org/7x25s7vyd/logo.png"
+    alt="World Wide Web Consortium Home"
+    width="42" height="42" border="0" /></a>
+    <% if(sess.email === undefined) { %>
+      <div class="nav-buttons">
+        <form action="/listings">
+          <input id="nav-button" type="submit" value="Listings" />
+        </form>
+        <form action="/user/new">
+          <input id="nav-button" type="submit" value="Sign up" />
+        </form>
+        <form action="/login">
+          <input id="nav-button" type="submit" value="Sign in" />
+        </form>
+      </div>
+    <% } %>
+    <% console.log(sess.email) %>
+    <% if(sess.email !== undefined) { %>
+      <div class="nav-buttons">
+        <form action="/listings/new">
+          <input id="nav-button" type="submit" value="Become a host!" />
+        </form>
+        <form action="/listings">
+          <input id="nav-button" type="submit" value="View listings" />
+        </form>
+        <form action="/user">
+          <input id="nav-button" type="submit" value="My Account" />
+        </form>
+        <form action="/logout">
+          <input id="nav-button" type="submit" value="Sign out" />
+        </form>
+      </div>
+    <% } %>
   </div>
 </html>
 
