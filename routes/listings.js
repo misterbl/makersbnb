@@ -15,7 +15,7 @@ router.get('/', function(req, res) {
   });
 });
 
-router.get('/view_:listing_id', function(req, res) {
+router.get('/view/:listing_id', function(req, res) {
   var listing;
   var user;
   models.Listing.find({where: { id: req.params.listing_id}}).then(function(listing) {
