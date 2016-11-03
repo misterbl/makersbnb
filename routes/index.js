@@ -13,7 +13,9 @@ router.post('/user/create', function(req, res) {
     lastname: req.body.lastname,
     password: req.body.password
   });
-    res.render('admin');
+  sess = req.session;
+  sess.email=req.body.email;
+  res.redirect('/admin');
 
 });
 router.post('/login',function(req,res){
