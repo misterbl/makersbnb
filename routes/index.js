@@ -6,7 +6,8 @@ var session = require('express-session');
 
 
 router.get('/home', function(req, res) {
-  res.render('home');
+  models.Listing.findAll({}).then(function(listings){
+  res.render('home', {listings: listings});});
 });
 
 // router.post('/user/create', function(req, res) {
