@@ -11,14 +11,15 @@ router.get('/home', function(req, res) {
   models.Listing.findAll().then(function(listings) {
     res.render('home', {
       sess: sess,
-      listings: listings
+      listingOne: listings[0],
+      listingTwo: listings[1]
     });
   });
 });
 
 router.get('/login', function(req, res) {
-  sess = req.session;
-  res.render('login');
+  var sess = req.session;
+  res.render('login', {sess: sess});
 });
 
 router.post('/login',function(req,res){
