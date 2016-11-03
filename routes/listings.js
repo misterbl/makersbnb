@@ -48,13 +48,13 @@ router.post('/updated/:listing_id', function(req,res){
   });
 });
 
-router.get('/new_listing', function(req, res) {
+router.get('/new', function(req, res) {
   models.Listing.findAll({}).then(function(listings) {
     res.json(listing);
   });
 });
 
-router.post('/new_listing', function(req, res) {
+router.post('/new', function(req, res) {
   var user;
   models.User.find({ where: { email: sess.email } }).then(function(user){
     var listing = models.Listing.create({

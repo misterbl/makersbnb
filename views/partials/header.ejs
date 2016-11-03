@@ -17,7 +17,21 @@
   <a href='/'><img src="https://s16.postimg.org/7x25s7vyd/logo.png"
     alt="World Wide Web Consortium Home"
     width="42" height="42" border="0" /></a>
-    <% if(sess.)
+    <% if(sess.email) { %>
+      <div class="nav-buttons">
+        <a href="/listings/new"><div id="nav-button">Become a host!</div></a>
+        <a href="/listings"><div id="nav-button">Listings</div></a>
+        <a href="/user"><div id="nav-button">My Account</div></a>
+        <a href="/logout"><div id="nav-button"></div>Logout</a>
+      </div>
+    <% } %>
+    <% if(!sess.email) { %>
+      <div class="nav-buttons">
+        <a href="/listings"><div id="nav-button">Listings</div></a>
+        <a href="/signup"><div id="nav-button">Sign up</div></a>
+        <a href="/login"><div id="nav-button">Sign in</div></a>
+      </div>
+    <% } %>
   </div>
 </html>
 
