@@ -1,0 +1,60 @@
+
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <script>
+    $(document).ready(function(){
+        var email,pass;
+        $("#submit").click(function(){
+            email=$("#email").val();
+            pass=$("#password").val();
+            /*
+            * Perform some validation here.
+            */
+            $.post("http://localhost:3000/login",{email:email,pass:pass},function(data){
+                if(data==='done')
+                {
+                    window.location.href="/admin";
+                }
+            });
+        });
+    });
+    </script>
+    <% include ./partials/header.ejs %>
+  <style >
+  #textboxid
+{
+  height:200px;
+  font-size:14pt;
+}
+  </style>
+</head>
+  <body>
+
+    <div class="listing">
+      <div class="title">
+        <h2><%= listing.name %></h2>
+      </div>
+      <div class="description">
+        <p><%= listing.description %></p>
+      </div>
+      <div class="price">
+        <p>£<%= listing.price %>/night</p>
+      </div>
+      <div class="image">
+        <img src=<%= listing.image %>>
+      </div>
+    </div>
+
+  <h2>Send us an e-mail with your booking dates</h2>
+
+  <form action="mailto:<%= user.email %>" method="post" enctype="text/plain">
+  <input placeholder="Name"type="text" name="name"><br>
+  <input placeholder="E-mail"type="text" name="mail"><br>
+  <input id="textboxid" placeholder="Booking"type="text" name="comment" size="50"><br><br>
+  <input type="submit" value="Book">
+  <input type="reset" value="Reset">
+  </form>
+  <% include ./partials/footer.ejs %>
+  </body>
+  </html>

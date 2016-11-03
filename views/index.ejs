@@ -2,80 +2,79 @@
 <html>
 <head>
   <title>MakersBnB</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
+  <script>
+  $(document).ready(function(){
     var email,pass;
     $("#submit").click(function(){
-        email=$("#email").val();
-        pass=$("#password").val();
-        /*
-        * Perform some validation here.
-        */
-        $.post("http://localhost:3000/login",{email:email,pass:pass},function(data){
-            if(data==='done')
-            {
-                window.location.href="/admin";
-            }
-        });
+      email=$("#email").val();
+      pass=$("#password").val();
+      /*
+      * Perform some validation here.
+      */
+      $.post("http://localhost:3000/login",{email:email,pass:pass},function(data){
+        if(data==='done')
+        {
+          window.location.href="/admin";
+        }
+      });
     });
-});
-</script>
-<% include ./partials/header.ejs %>
+  });
+  </script>
+  <% include ./partials/header.ejs %>
 </head>
 
-  <body>
+<body>
 
 
-      <h1>Please Login</h1>
-      <form action="/login" method="post">
-          <input placeholder="Email" type="email" name='email'/>
-          <input placeholder="Password" name='password'/>
-        <input class="submit" type='submit' value='Login'/>
-      </form>
-    </div>
+  <h1>Please Login</h1>
+  <form action="/login" method="post">
+    <input placeholder="Email" type="email" name='email'/>
+    <input placeholder="Password" name='password'/>
+    <input class="submit" type='submit' value='Login'/>
+  </form>
+</div>
 
 <h1>Listings</h1>
-  <div class="">
-      <% allListings.forEach(function(listing){ %>
- <article>
-        <div class="title">
-          <h2><%= listing.dataValues.name %></h2>
-        </div>
-        <div class="description">
-          <p><%= listing.dataValues.description %></p>
-        </div>
-        <div class="price">
-          <p>£<%= listing.dataValues.price %>/night</p>
-        </div>
-        <div class="image">
-          <img src=<%= listing.dataValues.image %>>
-        </div>
+<div class="">
+  <% allListings.forEach(function(listing){ %>
+    <a href="/listings/view/<%= listing.id %>">
+    <article>
+      <div class="title">
+        <h2><%= listing.dataValues.name %></h2>
+      </div>
+      <div class="price">
+        <p>£<%= listing.dataValues.price %>/night</p>
+      </div>
+      <div class="image">
+        <img src=<%= listing.dataValues.image %>>
+      </div>
       <% }); %>
-  </article>
+    </article>
+    </a>
   </div>
 
   <h1>Create new acount</h1>
   <form action="/user/create" method="post">
-   <input placeholder="UserName" name="username" />
-   <input placeholder="Email" name="email" />
-   <input placeholder="Firstname" name="firstname" />
-   <input placeholder="Lastname" name="lastname" />
-   <input placeholder="Password" name="password" />
-   <input type="submit" value="Create user" />
+    <input placeholder="UserName" name="username" />
+    <input placeholder="Email" name="email" />
+    <input placeholder="Firstname" name="firstname" />
+    <input placeholder="Lastname" name="lastname" />
+    <input placeholder="Password" name="password" />
+    <input class="submit" type="submit" value="Create user" />
   </form>
-<input type="date" />
+  <input type="date" />
 
-      <h1> Add a new listing </h1>
-       <form action="/new_listing" method="post">
-           <input placeholder="Name" name="name" />
-           <textarea placeholder="Description" name="description"></textarea>
-           <input placeholder="Price per night" type="number" name="price" />
-           <input placeholder="Image" name="image" />
-         <input type="submit" value="Create listing" />
-       </form>
-
-
+  <h1> Add a new listing </h1>
+  <form action="/listings/new_listing" method="post">
+    <input placeholder="Name" name="name" />
+    <textarea placeholder="Description" name="description"></textarea>
+    <input placeholder="Price per night" type="number" name="price" />
+    <input placeholder="Image" name="image" />
+    <input type="submit" class="submit" value="Create listing" />
+  </form>
+  <% include ./partials/footer.ejs %>
 </body>
 
 </html>

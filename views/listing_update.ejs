@@ -1,0 +1,47 @@
+
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <script>
+    $(document).ready(function(){
+        var email,pass;
+        $("#submit").click(function(){
+            email=$("#email").val();
+            pass=$("#password").val();
+            /*
+            * Perform some validation here.
+            */
+            $.post("http://localhost:3000/login",{email:email,pass:pass},function(data){
+                if(data==='done')
+                {
+                    window.location.href="/admin";
+                }
+            });
+        });
+    });
+    </script>
+    <% include ./partials/header.ejs %>
+  <style >
+  #textboxid
+{
+  height:200px;
+  font-size:14pt;
+}
+  </style>
+</head>
+  <body>
+
+
+    <form action="/listings/updated/<%= listing.id %>" method="post">
+        <input  type="text" name="name" value="<%= listing.name %>"/>
+        <input id="textboxid"  type="text"  name="description" value="<%= listing.description %>"/>
+        <input  type="text" type="number" name="price" value="<%= listing.price %>" />
+        <input  type="text" name="image" value="<%= listing.image %>"/>
+      <input type="submit" value="Update Listing" />
+    </form>
+
+
+  </body>
+
+
+  </html>
