@@ -6,9 +6,9 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var models = require('./models');
-var User = require('./models').User;
 var index = require('./routes/index');
-var users = require('./routes/users');
+var listings = require('./routes/listings');
+var my-account = require('./routes/my-account');
 var validator = require('validator');
 var app = express();
 var session = require('express-session');
@@ -28,19 +28,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({secret: 'ssshhhhh'}));
 var sess;
 app.use('/', index);
-app.use('/users', users);
+app.use('/listings', listings);
+app.use('/my-account', my-account);
 
 app.get('/',function(req,res){
   sess = req.session;
-  //Session set when user Request our app via URL
-  // if(sess.email) {
-  //   /*
-  //   * This line check Session existence.
-  //   * If it existed will do some action.
-  //   */
-  //   res.redirect('/admin');
-  // }
-
     var allListings;
     models.Listing.findAll({}).then(function(listings){
       allListings = listings;
