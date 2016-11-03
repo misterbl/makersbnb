@@ -17,13 +17,15 @@ router.get('/my_account', function(req, res) {
   var listings;
   models.User.find({ where: { email: sess.email } }).then(function(user) {
     models.Listing.findAll({ where: { user_id: user.id } }).then(function(listings) {
-      res.render('user', {user: user, listings: listings
+      res.render('admin', {user: user, listings: listings
       });
     });
   });
 });
 
 router.post('/create', function(req, res) {
+  models.User.count({ where: { email: req.body.email} }).then(function(user) {
+    if (user ===0) {
     models.User.create({
     username: req.body.username,
     email: req.body.email,
@@ -33,8 +35,11 @@ router.post('/create', function(req, res) {
   });
   sess = req.session;
   sess.email=req.body.email;
-  res.redirect('/admin');
-
+  res.redirect('/user');
+}
+else
+res.render('user_exists');
+});
 });
 
 module.exports = router;

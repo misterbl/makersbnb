@@ -14,7 +14,7 @@
   <body>
 
 
-    <form action="/updated/<%= listing.id %>" method="post">
+    <form action="/listings/updated/<%= listing.id %>" method="post">
         <input  type="text" name="name" value="<%= listing.name %>"/>
         <input id="textboxid"  type="text"  name="description" value="<%= listing.description %>"/>
         <input  type="text" type="number" name="price" value="<%= listing.price %>" />
