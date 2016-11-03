@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>MakersBnB</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script>
   $(document).ready(function(){
@@ -61,7 +62,7 @@
     <input placeholder="Firstname" name="firstname" />
     <input placeholder="Lastname" name="lastname" />
     <input placeholder="Password" name="password" />
-    <input type="submit" value="Create user" />
+    <input class="submit" type="submit" value="Create user" />
   </form>
   <input type="date" />
 
@@ -71,7 +72,7 @@
     <textarea placeholder="Description" name="description"></textarea>
     <input placeholder="Price per night" type="number" name="price" />
     <input placeholder="Image" name="image" />
-    <input type="submit" value="Create listing" />
+    <input type="submit" class="submit" value="Create listing" />
   </form>
   <% include ./partials/footer.ejs %>
 </body>

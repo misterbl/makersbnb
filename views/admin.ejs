@@ -2,7 +2,6 @@
 <html>
 <head>
   <title>MakersBnB</title>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
     var email,pass;
@@ -22,9 +21,6 @@ $(document).ready(function(){
 });
 </script>
 <% include ./partials/header.ejs %>
-<style>
-
-</style>
 </head>
   <body>
 
@@ -37,10 +33,10 @@ $(document).ready(function(){
 <ol>Description:<br><%= listing.description %></ol><br>
 <ol>price per night: £<%= listing.price %></ol>
 <ol><form action="/listings/update/<%= listing.id %>">
-      <input type="submit" value="Update" />
+      <input class="submit" type="submit" value="Update" />
 </form></ol>
 <ol><form action="/listings/delete/<%= listing.id %>">
-      <input type="submit" value="Delete" />
+      <input class="submit" type="submit" value="Delete" />
     </form></ol>
 </ul>
 <% }); %>
@@ -53,7 +49,7 @@ $(document).ready(function(){
              <textarea placeholder="Description" name="description"></textarea>
              <input placeholder="Price per night" type="number" name="price" />
              <input placeholder="Image" name="image" />
-           <input type="submit" value="Create listing" />
+           <input class="submit" type="submit" value="Create listing" />
          </form>
   <% include ./partials/footer.ejs %>
   </body>

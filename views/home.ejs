@@ -1,74 +1,43 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-  <title>MakersBnB</title>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-    var email,pass;
-    $("#submit").click(function(){
-        email=$("#email").val();
-        pass=$("#password").val();
-        /*
-        * Perform some validation here.
-        */
-        $.post("http://localhost:3000/login",{email:email,pass:pass},function(data){
-            if(data==='done')
-            {
-                window.location.href="/admin";
-            }
-        });
-    });
-});
-</script>
-<% include ./partials/header.ejs %>
-</head>
+  <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <title>MakersBnB</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script>
+  $(document).ready(function(){
+      var email,pass;
+      $("#submit").click(function(){
+          email=$("#email").val();
+          pass=$("#password").val();
+          /*
+          * Perform some validation here.
+          */
+          $.post("http://localhost:3000/login",{email:email,pass:pass},function(data){
+              if(data==='done')
+              {
+                  window.location.href="/admin";
+              }
+          });
+      });
+  });
+  </script>
+  <% include ./partials/header.ejs %>
+  </head>
 
-<body>
-</div>
-
-<div data-role="main" class="ui-content">
-  <a href="#myPopup" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all ui-icon-check ui-btn-icon-left">Login</a>
-
-  <div data-role="popup" id="myPopup" class="ui-content" style="min-width:250px;">
-    <form method="post" action="/login">
-      <div>
-        <h3>Login information</h3>
-        <label for="usrnm" class="ui-hidden-accessible">Username:</label>
-        <input type="text" name="email" id="usrnm" placeholder="Email">
-        <label for="pswd" class="ui-hidden-accessible">Password:</label>
-        <input type="password" name="password" id="pswd" placeholder="Password">
-        <label for="log">Keep me logged in</label>
-        <input type="checkbox" name="login" id="log" value="1" data-mini="true">
-        <input type="submit" data-inline="true" value="Log in">
+  <body>
+    <article class="main-content">
+      <div class="content-left">
+        <h1>Prepare to</h1><br />
+        <h1>be amazed.</h1>
       </div>
-    </form>
-  </div>
-</div>
+      <div class="content-right">
 
-</div>
-
-<div data-role="main" class="ui-content">
-  <a href="#myPopup" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all ui-icon-check ui-btn-icon-left">Sign up</a>
-
-  <div data-role="popup" id="myPopup" class="ui-content" style="min-width:250px;">
-    <form method="post" action="demoform.asp">
-      <div>
-        <h3>Login information</h3>
-        <label for="usrnm" class="ui-hidden-accessible">Username:</label>
-        <input type="text" name="user" id="usrnm" placeholder="Username">
-        <label for="pswd" class="ui-hidden-accessible">Password:</label>
-        <input type="password" name="passw" id="pswd" placeholder="Password">
-        <label for="log">Keep me logged in</label>
-        <input type="checkbox" name="login" id="log" value="1" data-mini="true">
-        <input type="submit" data-inline="true" value="Log in">
       </div>
-    </form>
-  </div>
-</div>
-</body>
+    </article>
+  </body>
 </html>
