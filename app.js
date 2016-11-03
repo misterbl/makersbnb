@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 var models = require('./models');
 var index = require('./routes/index');
 var listings = require('./routes/listings');
-var my-account = require('./routes/my-account');
+var myAccount = require('./routes/my-account');
 var validator = require('validator');
 var app = express();
 var session = require('express-session');
@@ -29,7 +29,7 @@ app.use(session({secret: 'ssshhhhh'}));
 var sess;
 app.use('/', index);
 app.use('/listings', listings);
-app.use('/my-account', my-account);
+app.use('/my-account', myAccount);
 
 app.get('/',function(req,res){
   sess = req.session;
