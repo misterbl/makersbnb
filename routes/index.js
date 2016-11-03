@@ -3,22 +3,26 @@ var router = express.Router();
 var models = require('../models');
 var Listing = require('../models').Listing;
 var session = require('express-session');
+var sess;
 
 
 router.get('/home', function(req, res) {
-  var sess = req.session;
-  res.render('home', {
-    sess: sess
+  sess = req.session;
+  models.Listing.findAll().then(function(listings) {
+    res.render('home', {
+      sess: sess,
+      listings: listings
+    });
   });
 });
 
 router.get('/login', function(req, res) {
   sess = req.session;
-  res.render('login')
+  res.render('login');
 });
 
 router.post('/login',function(req,res){
-  var sess = req.session;
+  sess = req.session;
     return models.User.count({ where: { email: req.body.email } && { password: req.body.password } })
       .then(count => {
         if (count !== 0) {
