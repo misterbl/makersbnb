@@ -4,6 +4,7 @@ module.exports = {
   },
 
   postgresql: {
+    strategy: truncation,
     skipTables: ['schema_migrations']
   },
 

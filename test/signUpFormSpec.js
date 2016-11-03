@@ -4,15 +4,14 @@ var request = require('request');
 var sinon = require('sinon');
 var app = require('../app');
 var nock = require('nock');
-// var myServer = require('../bin/www');
 var http = require('http');
 var Browser = require('zombie');
 var User = require('../models').User;
+// var index = require('../models/index');
 
 // var DatabaseCleaner = require('database-cleaner');
 // var databaseCleaner = new DatabaseCleaner('postgres');
-//
-// databaseCleaner.clean(`http://localhost/makersbnb${process.env.NODE_ENV}`, function(){});
+// databaseCleaner.clean(`postgres://localhost/makersbnb_${process.env.NODE_ENV}`, function(){});
 
 
 
@@ -22,9 +21,14 @@ describe('sign up form', function(){
     this.browser = new Browser ({site: 'http://localhost:3000'});
   });
 
+
   beforeEach(function(done){
-    this.browser.visit('/', done);
-  })
+
+    this.browser.visit('/listings', done);
+  });
+
+
+
   it('shows the sign up form', function(){
     expect(this.browser.success).to.be.ok;
     expect(this.browser.text('h1')).contain('Create new acount')
@@ -41,7 +45,7 @@ describe('sign up form', function(){
     browser.pressButton('Create user').then(function(){
       expect(browser.success).to.be.ok;
 
-    }).then(done);
+    });
 
   });
 
