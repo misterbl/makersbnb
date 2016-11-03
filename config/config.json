@@ -3,21 +3,21 @@
     "username": null,
     "password": null,
     "database": "makersbnb_development",
-    "host": "127.0.0.1",
+    "host": "127.0.0.1:5423",
     "dialect": "postgres"
   },
   "test": {
     "username": null,
     "password": null,
     "database": "makersbnb_test",
-    "host": "127.0.0.1",
+    "host": "127.0.0.1:5432",
     "dialect": "postgres"
   },
   "production": {
     "username": null,
     "password": null,
     "database": "makersbnb_production",
-    "host": "127.0.0.1",
+    "host": "127.0.0.1:5432",
     "dialect": "postgres"
   }
 }
