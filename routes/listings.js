@@ -3,11 +3,10 @@ var router = express.Router();
 var models = require('../models');
 var Listing = require('../models').Listing;
 var session = require('express-session');
-var sess;
 
 
 router.get('/', function(req, res) {
-  sess = req.session;
+  var sess = req.session;
   var allListings;
   models.Listing.findAll({}).then(function(listings){
     allListings = listings;
@@ -16,7 +15,7 @@ router.get('/', function(req, res) {
 });
 
 router.get('/view/:listing_id', function(req, res) {
-  sess = req.session;
+  var sess = req.session;
   var listing;
   var user;
   models.Listing.find({where: { id: req.params.listing_id}}).then(function(listing) {
@@ -26,7 +25,7 @@ router.get('/view/:listing_id', function(req, res) {
 });
 
 router.get('/update/:listing_id', function(req, res) {
-  sess = req.session;
+  var sess = req.session;
   var listing;
    models.Listing.find({where: {id: req.params.listing_id }}).then(function(listing){
      res.render('listing_update', {listing: listing});
@@ -34,7 +33,7 @@ router.get('/update/:listing_id', function(req, res) {
  });
 
 router.get('/delete/:listing_id', function(req, res) {
-  sess = req.session;
+  var sess = req.session;
   var listing;
   models.Listing.destroy({where: {id: req.params.listing_id }}).then(function(listing){
     res.redirect('/user');

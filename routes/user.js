@@ -31,7 +31,7 @@ router.get('/new', function(req, res) {
   });
 });
 
-router.post('/create', function(req, res) {
+router.post('/new', function(req, res) {
   sess = req.session;
   models.User.count({ where: { email: req.body.email} }).then(function(user) {
     if (user ===0) {
