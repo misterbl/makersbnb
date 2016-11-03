@@ -4,7 +4,10 @@ module.exports = function(sequelize, DataTypes) {
     name: DataTypes.STRING,
     description: DataTypes.TEXT,
     price: DataTypes.INTEGER,
-    image: DataTypes.STRING
+    image: DataTypes.STRING,
+    booking_from: DataTypes.STRING,
+    booking_until: DataTypes.STRING,
+    booking_email: DataTypes.STRING
   },
   {
     classMethods: {

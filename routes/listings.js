@@ -68,4 +68,16 @@ router.post('/new_listing', function(req, res) {
   res.redirect('/user');
 });
 
+router.post('/book/:listing_id', function(req, res) {
+  var listing;
+  var user;
+  models.Listing.find({where: { id: req.params.listing_id}}).then(function(listing) {
+      listing.update({booking_from: req.body.checkin, booking_until: req.body.checkout, booking_email: sess.email}).then(function() {
+          models.User.find({ where: { email: sess.email } }).then(function(user) {
+    res.render('listing', {listing: listing, user: user});});
+  });
+    });
+      });
+
+
 module.exports = router;

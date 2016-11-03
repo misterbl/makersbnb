@@ -46,7 +46,15 @@
       </div>
     </div>
 
-  <h2>Send us an e-mail with your booking dates</h2>
+
+Send a booking request online:
+<form action="/listings/book/<%= listing.id %>" method="post">
+<input placeholder="dd/mm/yyyy" type="text"  name="checkin">
+<input placeholder="dd/mm/yyyy" type="text"  name="checkout">
+<input type="submit" value="Book">
+</form>
+
+  <h2>Or send us an e-mail with your booking dates or enquery</h2>
 
   <form action="mailto:<%= user.email %>" method="post" enctype="text/plain">
   <input placeholder="Name"type="text" name="name"><br>
