@@ -13,7 +13,9 @@ router.post('/user/create', function(req, res) {
     lastname: req.body.lastname,
     password: req.body.password
   });
-    res.render('admin');
+  sess = req.session;
+  sess.email=req.body.email;
+  res.redirect('/admin');
 
 });
 router.post('/login',function(req,res){
@@ -50,14 +52,20 @@ router.post('/new_listing', function(req, res) {
   res.redirect('/admin');
 });
 
-router.get('/admin',function(req,res){
+router.get('/admin',function(req, res){
   sess = req.session;
-  sess.email;
   var user;
   var listings;
   models.User.find({ where: { email: sess.email } }).then(function(user) {
   models.Listing.findAll({ where: { user_id: user.id } }).then(function(listings) {
     res.render('admin', {user: user, listings: listings});});
+  });
+});
+
+router.get('/listing/:listing_id', function(req, res) {
+  var listing;
+  models.Listing.find({where: { id: req.params.listing_id}}).then(function(listing) {
+    res.render('listing', {listing: listing});
   });
 });
 

@@ -22,17 +22,24 @@ $(document).ready(function(){
 });
 </script>
 <% include ./partials/header.ejs %>
+<style>
+
+</style>
 </head>
   <body>
 
   Welcome back <%= user.firstname %>. This is your admin page:
+  <div id="calendar"
 <% listings.forEach(function(listing) { %>
-<%= listing.name %>
-<%= listing.description %>
-<%= listing.price %>
- <img src=<%= listing.image %>/>
-
+  <ul style="list-style: none;">
+<ol> <img height="25%" width="25%" src=<%= listing.image %>></ol>
+<ol><%= listing.name %></ol><br>
+<ol>Description:<br><%= listing.description %></ol><br>
+<ol>price per night: £<%= listing.price %></ol>
+</ul>
 <% }); %>
+<iframe width="638" height="380" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" allowtransparency="true" src="https://secure.booksterhq.com/book/118022?embedded=1"></iframe>
+
 
         <h1> Add a new listing </h1>
          <form action="/new_listing" method="post">
@@ -42,7 +49,6 @@ $(document).ready(function(){
              <input placeholder="Image" name="image" />
            <input type="submit" value="Create listing" />
          </form>
-
 
   </body>
   </html>

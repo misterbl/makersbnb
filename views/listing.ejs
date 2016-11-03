@@ -1,0 +1,39 @@
+
+  <!DOCTYPE html>
+  <html>
+  <style >
+  #textboxid
+{
+  height:200px;
+  font-size:14pt;
+}
+  </style>
+  <body>
+
+    <div class="listing">
+      <div class="title">
+        <h2><%= listing.name %></h2>
+      </div>
+      <div class="description">
+        <p><%= listing.description %></p>
+      </div>
+      <div class="price">
+        <p>£<%= listing.price %>/night</p>
+      </div>
+      <div class="image">
+        <img src=<%= listing.image %>>
+      </div>
+    </div>
+
+  <h2>Send us an e-mail with your booking dates</h2>
+
+  <form action="mailto:misterbl@hotmail.com" method="post" enctype="text/plain">
+  <input placeholder="Name"type="text" name="name"><br>
+  <input placeholder="E-mail"type="text" name="mail"><br>
+  <input id="textboxid" placeholder="Booking"type="text" name="comment" size="50"><br><br>
+  <input type="submit" value="Book">
+  <input type="reset" value="Reset">
+  </form>
+
+  </body>
+  </html>
