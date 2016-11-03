@@ -65,9 +65,25 @@ router.get('/admin',function(req, res){
 
 router.get('/listing/:listing_id', function(req, res) {
   var listing;
+  var user;
   models.Listing.find({where: { id: req.params.listing_id}}).then(function(listing) {
-    res.render('listing', {listing: listing});
+    models.User.find({where: {id: listing.user_id}}).then(function(user){
+    res.render('listing', {listing: listing, user: user});});
   });
 });
-
+ router.get('/update/:listing_id', function(req, res) {
+  var listing;
+   models.Listing.find({where: {id: req.params.listing_id }}).then(function(listing){
+     res.render('listing_update', {listing: listing});
+   });
+ });
+router.post('/updated/:listing_id', function(req,res){
+  var listing;
+  models.Listing.find({where: {id: req.params.listing_id }}).then(function(listing){
+    listing.update({name: req.body.name, description: req.body.description,
+    price: req.body.price, image: req.body.image,}).then(function() {
+      res.redirect('/admin');
+    });
+  });
+});
 module.exports = router;

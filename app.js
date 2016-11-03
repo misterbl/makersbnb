@@ -33,22 +33,22 @@ app.use('/users', users);
 app.get('/',function(req,res){
   sess = req.session;
   //Session set when user Request our app via URL
-  if(sess.email) {
-    /*
-    * This line check Session existence.
-    * If it existed will do some action.
-    */
-    res.redirect('/admin');
-  }
-  else {
+  // if(sess.email) {
+  //   /*
+  //   * This line check Session existence.
+  //   * If it existed will do some action.
+  //   */
+  //   res.redirect('/admin');
+  // }
+
     var allListings;
     models.Listing.findAll({}).then(function(listings){
       allListings = listings;
       res.render('index.ejs', {allListings: allListings});
       console.log(allListings);
     });
-  }
-});
+  });
+
 
 app.get('/logout',function(req,res){
   req.session.destroy(function(err) {
