@@ -8,7 +8,7 @@
   <a href='/'><img src="https://s16.postimg.org/7x25s7vyd/logo.png"
     alt="World Wide Web Consortium Home"
     width="42" height="42" border="0" /></a>
-    <% if(!sess) { %>
+    <% if(sess.email === undefined) { %>
       <div class="nav-buttons">
         <form action="/listings">
           <input id="nav-button" type="submit" value="Listings" />
@@ -21,7 +21,7 @@
         </form>
       </div>
     <% } %>
-    <% if(sess) { %>
+    <% if(sess.email !== undefined) { %>
       <div class="nav-buttons">
         <form action="/listings/new">
           <input id="nav-button" type="submit" value="Become a host!" />
