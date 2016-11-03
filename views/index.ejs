@@ -38,7 +38,7 @@
 <h1>Listings</h1>
 <div class="">
   <% allListings.forEach(function(listing){ %>
-    <a href="/listing/<%= listing.id %>">
+    <a href="/listings/view/<%= listing.id %>">
     <article>
       <div class="title">
         <h2><%= listing.dataValues.name %></h2>
@@ -66,7 +66,7 @@
   <input type="date" />
 
   <h1> Add a new listing </h1>
-  <form action="/new_listing" method="post">
+  <form action="/listings/new_listing" method="post">
     <input placeholder="Name" name="name" />
     <textarea placeholder="Description" name="description"></textarea>
     <input placeholder="Price per night" type="number" name="price" />
