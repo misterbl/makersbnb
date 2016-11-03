@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <title>MakersBnB</title>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -17,7 +16,7 @@
           $.post("http://localhost:3000/login",{email:email,pass:pass},function(data){
               if(data==='done')
               {
-                  window.location.href="/admin";
+                  window.location.href="/user";
               }
           });
       });
