@@ -3,8 +3,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="../jquery/jquery.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-<script src="../jquery/interface.js"></script>
-<!-- <script src="../src/makerbnb.js"></script> -->
 <meta charset="utf-8">
 
 <style>
@@ -17,19 +15,33 @@
   <a href='/'><img src="https://s16.postimg.org/7x25s7vyd/logo.png"
     alt="World Wide Web Consortium Home"
     width="42" height="42" border="0" /></a>
-    <% if(sess.email) { %>
+    <% if(sess !== undefined) { %>
       <div class="nav-buttons">
-        <a href="/listings/new"><div id="nav-button">Become a host!</div></a>
-        <a href="/listings"><div id="nav-button">Listings</div></a>
-        <a href="/user"><div id="nav-button">My Account</div></a>
-        <a href="/logout"><div id="nav-button"></div>Logout</a>
+        <form action="/listings" id="nav-buttons">
+          <input type="submit" value="Listings" />
+        </form>
+        <form action="/user/create" id="nav-buttons">
+          <input type="submit" value="Sign up" />
+        </form>
+        <form action="/login" id="nav-buttons">
+          <input type="submit" value="Sign in" />
+        </form>
       </div>
     <% } %>
-    <% if(!sess.email) { %>
+    <% if(sess === undefined) { %>
       <div class="nav-buttons">
-        <a href="/listings"><div id="nav-button">Listings</div></a>
-        <a href="/signup"><div id="nav-button">Sign up</div></a>
-        <a href="/login"><div id="nav-button">Sign in</div></a>
+        <form action="/listings/new" id="nav-buttons">
+          <input type="submit" value="Become a host!" />
+        </form>
+        <form action="/listings" id="nav-buttons">
+          <input type="submit" value="View listings" />
+        </form>
+        <form action="/user" id="nav-buttons">
+          <input type="submit" value="My Account" />
+        </form>
+        <form action="/logout" id="nav-buttons">
+          <input type="submit" value="Sign out" />
+        </form>
       </div>
     <% } %>
   </div>

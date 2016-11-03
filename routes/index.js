@@ -6,18 +6,24 @@ var session = require('express-session');
 
 
 router.get('/home', function(req, res) {
-  res.render('home');
+  var sess = req.session;
+  console.log(sess.email);
+  res.render('home', {
+    sess: sess
+  });
 });
 
 router.post('/login',function(req,res){
+  var sess = req.session;
     return models.User.count({ where: { email: req.body.email } && { password: req.body.password } })
       .then(count => {
         if (count !== 0) {
-          sess = req.session;
           sess.email=req.body.email;
           res.redirect('/user');
         }
-        res.render('login_error');
+        res.render('login_error', {
+          sess: sess
+        });
     });
 });
 
