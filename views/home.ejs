@@ -44,11 +44,13 @@
         </div>
       </div>
       <div class="content-right">
-        <div class="showcase-listing1">
-          <h3><% listings[0].name; console.log(listings[0].name) %></h3>
+        <div class="showcase-listing">
+          <h3>Paris</h3>
+          <img id="showcase-image" height="175" width="250" src=<%= listings[0].image %>>
         </div>
-        <div class="showcase-listing2">
-          <h3><% listings[1].name; console.log(listings[1].name) %></h3>
+        <div class="showcase-listing">
+          <h3>London</h3>
+          <img id="showcase-image" height="175" width="250" src=<%= listings[1].image %>>
         </div>
       </div>
     </article>
@@ -61,6 +63,16 @@ h1 {
   font-style: italic;
   font-weight: 400;
   font-size: 4em;
+}
+
+.showcase-image {
+  height: 100px;
+  width: 100px;
+}
+
+.showcase-listing {
+  height: 50%;
+  padding-left: 50px;
 }
 
 .inspire-text {
@@ -106,10 +118,10 @@ h1 {
 }
 
 .content-right {
+  height: 530px;
   padding: 10px;
   margin: 10px;
   width: 40%;
-  height: 100%;
   border-left-style: solid;
   border-width: 1px;
   border-color: #c1c1c1;
