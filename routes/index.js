@@ -54,7 +54,6 @@ router.post('/new_listing', function(req, res) {
 
 router.get('/admin',function(req, res){
   sess = req.session;
-  sess.email;
   var user;
   var listings;
   models.User.find({ where: { email: sess.email } }).then(function(user) {
