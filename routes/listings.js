@@ -31,12 +31,19 @@ router.get('/update/:listing_id', function(req, res) {
    });
  });
 
+router.get('/delete/:listing_id', function(req, res) {
+ var listing;
+  models.Listing.destroy({where: {id: req.params.listing_id }}).then(function(listing){
+    res.redirect('/user');
+  });
+});
+
 router.post('/updated/:listing_id', function(req,res){
   var listing;
   models.Listing.find({where: {id: req.params.listing_id }}).then(function(listing){
     listing.update({name: req.body.name, description: req.body.description,
     price: req.body.price, image: req.body.image,}).then(function() {
-      res.redirect('/admin');
+      res.redirect('/user');
     });
   });
 });

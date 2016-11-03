@@ -36,8 +36,11 @@ $(document).ready(function(){
 <ol><%= listing.name %></ol><br>
 <ol>Description:<br><%= listing.description %></ol><br>
 <ol>price per night: £<%= listing.price %></ol>
-<ol><form action="/update/<%= listing.id %>">
+<ol><form action="/listings/update/<%= listing.id %>">
       <input type="submit" value="Update" />
+</form></ol>
+<ol><form action="/listings/delete/<%= listing.id %>">
+      <input type="submit" value="Delete" />
     </form></ol>
 </ul>
 <% }); %>
