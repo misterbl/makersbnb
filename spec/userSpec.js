@@ -1,6 +1,6 @@
 var models = require('../models');
 var User = require('../models').User;
-var user = require('./SpecHelper')
+var user = require('SpecHelper')
 
 
 describe ('User', function () {

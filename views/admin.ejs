@@ -36,6 +36,9 @@ $(document).ready(function(){
 <ol><%= listing.name %></ol><br>
 <ol>Description:<br><%= listing.description %></ol><br>
 <ol>price per night: £<%= listing.price %></ol>
+<ol><form action="/update/<%= listing.id %>">
+      <input type="submit" value="Update" />
+    </form></ol>
 </ul>
 <% }); %>
 <iframe width="638" height="380" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" allowtransparency="true" src="https://secure.booksterhq.com/book/118022?embedded=1"></iframe>
@@ -49,6 +52,6 @@ $(document).ready(function(){
              <input placeholder="Image" name="image" />
            <input type="submit" value="Create listing" />
          </form>
-
+  <% include ./partials/footer.ejs %>
   </body>
   </html>
