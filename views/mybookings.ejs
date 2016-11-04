@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MakersBnB</title>
+<script>
+$(document).ready(function(){
+    var email,pass;
+    $("#submit").click(function(){
+        email=$("#email").val();
+        pass=$("#password").val();
+        /*
+        * Perform some validation here.
+        */
+        $.post("http://localhost:3000/login",{email:email,pass:pass},function(data){
+            if(data==='done')
+            {
+                window.location.href="/admin";
+            }
+        });
+    });
+});
+</script>
+<% include ./partials/header.ejs %>
+</head>
+  <body>
+
+    My current bookings received
+    <div>
+      <% mybookings.forEach(function(mybooking){ %>
+        <ul style="list-style: none;">
+      <ol><%= mybooking.listing_id %></ol><br>
+      <ol>from <%= mybooking.checkin %></ol>
+      <ol>to <%= mybooking.checkout %></ol>
+      <ol>price per night: £<%= mybooking.price %></ol>
+      <ol>to <%= mybooking.email %></ol>
+      <ol><form action="/booking/accept/<%= booking.id %>">
+      <input class="submit" type="submit" value="Accept booking" />
+      </form></ol>
+      <ol><form action="/booking/reject/<%= booking.id %>">
+      <input class="submit" type="submit" value="Reject Booking" />
+      </form></ol>
+      </ul>
+      <% }); %>
+    </div>
+
+    <% include ./partials/footer.ejs %>
+    </body>
+
+    <% include ./partials/footer.ejs %>
+    </body>
+    </html>

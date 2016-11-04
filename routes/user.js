@@ -36,7 +36,7 @@ router.post('/my_account/requests', function(req, res){
   models.User.find({ where: { email: sess.email } }).then(function(user) {
     models.Listing.findAll({where: {user_id: user.id }}).then(function(listings){
       async.map(listings, function(listing, mybookings){
-        models.Booking.findAll({where: {listing_id: listing.id}}).then(function(mybookings){console.log(mybookings);
+        models.Booking.findAll({where: {listing_id: listing.id}}).then(function(mybookings){
           res.render('myrequests', {user: user, sess: sess, listings: listings, mybookings: mybookings });
         });
       });

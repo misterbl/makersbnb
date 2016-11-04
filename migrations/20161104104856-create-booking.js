@@ -24,6 +24,10 @@ module.exports = {
       email: {
         type: Sequelize.STRING
       },
+      accepted: {
+        allowNull: true,
+        type: Sequelize.BOOLEAN
+      },
       complete: {
         type: Sequelize.BOOLEAN
       },
