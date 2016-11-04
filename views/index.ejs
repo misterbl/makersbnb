@@ -58,9 +58,11 @@
   <h1>Browse Listings</h1>
   <% allListings.forEach(function(listing){ %>
     <div class="single-listing">
+      <a href="/listings/view/<%= listing.id %>">
       <div class="image">
         <img src=<%= listing.dataValues.image %> height="175" width="250">
       </div>
+      </a>
       <div class="text-content">
         <div class="title">
           <h3><%= listing.dataValues.name %></h3>
