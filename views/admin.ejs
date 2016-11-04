@@ -25,13 +25,14 @@ $(document).ready(function(){
   <body>
 
   Welcome back <%= user.firstname %>. This is your admin page:
-  <div id="calendar"
+  <div id="calendar">
 <% listings.forEach(function(listing) { %>
   <ul style="list-style: none;">
 <ol> <img height="25%" width="25%" src=<%= listing.image %>></ol>
 <ol><%= listing.name %></ol><br>
 <ol>Description:<br><%= listing.description %></ol><br>
 <ol>price per night: £<%= listing.price %></ol>
+<ol>new booking: from <%= listing.booking_from %> to <%= listing.booking_until %> by <%= listing.booking_email%></ol>
 <ol><form action="/listings/update/<%= listing.id %>">
       <input class="submit" type="submit" value="Update" />
 </form></ol>

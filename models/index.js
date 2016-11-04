@@ -1,5 +1,9 @@
 'use strict';
-
+var express = require('express');
+var router = express.Router();
+var models = require('../models');
+var Listing = require('../models').Listing;
+var session = require('express-session');
 var fs        = require('fs');
 var path      = require('path');
 var Sequelize = require('sequelize');
@@ -31,5 +35,6 @@ Object.keys(db).forEach(function(modelName) {
 });
 
 db.sequelize = sequelize;
-
+db.Sequelize = Sequelize;
+module.exports = router;
 module.exports = db;

@@ -26,6 +26,18 @@ module.exports = {
       image: {
         type: Sequelize.STRING
       },
+      booking_from: {
+        allowNull: true,
+        type: Sequelize.STRING
+      },
+      booking_until: {
+        allowNull: true,
+        type: Sequelize.STRING
+      },
+      booking_email: {
+        allowNull: true,
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

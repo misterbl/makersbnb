@@ -5,14 +5,14 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var models = require('./models');
+var models = require('./models').User;
 var index = require('./routes/index');
 var listings = require('./routes/listings');
 var user = require('./routes/user');
 var validator = require('validator');
 var app = express();
 var session = require('express-session');
-var validator = require('validator');
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
