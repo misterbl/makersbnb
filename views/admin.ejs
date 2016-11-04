@@ -26,17 +26,21 @@ $(document).ready(function(){
 <% include ./partials/header.ejs %>
 </head>
   <body>
-    <div id="colorful">
+    <div class="greeting">
       <h2>Welcome back <%= user.firstname %>. This is your admin page:</h2>
+    </div>
+    <div id="colorful">
       <h1> Add a new listing </h1>
     </div>
-     <form action="/listings/new" method="post">
-       <input placeholder="Name" name="name" class="text-form" size="100"/>
-       <textarea placeholder="Description" name="description" class="text-form" size="100"></textarea>
-       <input placeholder="Price per night" type="number" name="price" class="text-form" size="100"/>
-       <input placeholder="Image" name="image" class="text-form" size="100"/>
-       <input class="button" type="submit" value="Create listing" />
-     </form>
+    <div class="form-content">
+      <form action="/listings/new" method="post" class="text-form" size="100">
+        <input placeholder="Name" name="name" class="text-form" size="100"/>
+        <textarea placeholder="Description" name="description" class="text-form" size="100"></textarea>
+        <input placeholder="Price per night" type="number" name="price" class="text-form price-form" size="100"/>
+        <input placeholder="Image" name="image" class="text-form" size="100"/>
+        <input class="button" type="submit" value="Create listing" />
+      </form>
+    </div>
   <% include ./partials/footer.ejs %>
   </body>
   </html>
