@@ -71,8 +71,8 @@ input.nav-button:hover {
   justify-content: center;
 }
 
-input.button {
-  margin: 2% 36%;
+input.button, {
+  margin: 10% 0;
 }
 
 .button {
