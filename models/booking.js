@@ -5,6 +5,7 @@ module.exports = function(sequelize, DataTypes) {
     checkout: DataTypes.STRING,
     price: DataTypes.INTEGER,
     email: DataTypes.STRING,
+    accepted: DataTypes.BOOLEAN,
     complete: DataTypes.BOOLEAN
   }, {
     classMethods: {

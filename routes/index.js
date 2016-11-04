@@ -37,4 +37,29 @@ router.post('/login',function(req,res){
     });
 });
 
+router.post('/booking/accept/:booking_id', function(req, res) {
+    sess = req.session;
+    var user;
+    var booking;
+    models.Booking.find({where: {id: req.params.booking_id }}).then(function(booking) {
+      booking.update({accepted: true}).then(function(){
+            res.redirect('/user/my_account');
+      });
+      });
+
+      router.post('/booking/reject/:booking_id', function(req, res) {
+          sess = req.session;
+          var user;
+          var booking;
+          models.Booking.findAll({where: {id: req.params.booking_id }}).then(function(booking) {
+            booking.update({accepted: false}).then(function(){
+                  res.redirect('/user/my_account');
+            });
+            });
+            });
+
+});
+
+
+
 module.exports = router;

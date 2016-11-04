@@ -29,10 +29,16 @@ My current bookings received
   <% mybookings.forEach(function(mybooking){ %>
     <ul style="list-style: none;">
   <ol><%= mybooking.listing_id %></ol><br>
-  <ol>from<%= mybooking.checkin %></ol>
+  <ol>from <%= mybooking.checkin %></ol>
   <ol>to <%= mybooking.checkout %></ol>
   <ol>price per night: £<%= mybooking.price %></ol>
   <ol>to <%= mybooking.email %></ol>
+  <ol><form method="post" action="/booking/accept/<%= mybooking.id %>">
+  <input class="submit" type="submit" value="Accept booking" />
+  </form></ol>
+  <ol><form method="post" action="/booking/reject/<%= mybooking.id %>">
+  <input class="submit" type="submit" value="Reject Booking" />
+  </form></ol>
   </ul>
   <% }); %>
 </div>

@@ -32,7 +32,6 @@ $(document).ready(function(){
 <ol><%= listing.name %></ol><br>
 <ol>Description:<br><%= listing.description %></ol><br>
 <ol>price per night: £<%= listing.price %></ol>
-<ol>new booking: from <%= listing.booking_from %> to <%= listing.booking_until %> by <%= listing.booking_email%></ol>
 <ol><form action="/listings/update/<%= listing.id %>">
       <input class="submit" type="submit" value="Update" />
 </form></ol>
@@ -52,10 +51,20 @@ My current bookings made
   <ol>from<%= booking.checkin %></ol>
   <ol>to <%= booking.checkout %></ol>
   <ol>price per night: £<%= booking.price %></ol>
+
+  <ol><% if(booking.accepted){ %>
+    <p> booking accepted, you will soon receive a confirmation email</p>
+    <% } else if (booking.accepted === false) { %>
+      <p> booking declined, you will soon receive an explanation email</p>
+    <% } else { %>
+      <p> booking's acceptation pending</p>
+    <% } %>
+    </ol>
   </ul>
   <% }); %>
 </div>
 
+My requests for booking:
 <form action="/user/my_account/requests" method="post">
   <input type="submit" value="My requests" />
 </form>
