@@ -3,91 +3,76 @@
 <head>
   <title>MakersBnB</title>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <link rel="stylesheet" href="/stylesheets/style.css" media="screen" title="no title">
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-  <script>
-  $(document).ready(function(){
-    var email,pass;
-    $("#submit").click(function(){
-      email=$("#email").val();
-      pass=$("#password").val();
-      /*
-      * Perform some validation here.
-      */
-      $.post("http://localhost:3000/login",{email:email,pass:pass},function(data){
-        if(data==='done')
-        {
-          window.location.href="/admin";
-        }
-      });
-    });
-  });
-  </script>
+  <script src="javascripts/auth.js"></script>
   <% include ./partials/header.ejs %>
   <style>
-     #map {
-      height: 200px;
-      width: 50%;
-     }
+
+    body {
+    }
+
+    .main {
+      margin: 100px;
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .single-listing {
+      display: flex;
+      margin: 10px;
+      padding: 20px;
+      height: 175px;
+      border-style: solid;
+      border-radius: 4px;
+      border-color: #c1c1c1;
+      border-width: 1px;
+    }
+
+    .title {
+      height: 60px;
+    }
+
+    .image {
+
+    }
+
+    .price {
+      height: 60px;
+    }
+
+    .text-content {
+      display: flex;
+      flex-direction: column;
+      margin-left: 50px;
+    }
+
   </style>
 </head>
 
 <body>
 
-
-  <h1>Please Login</h1>
-
-</div>
-
-<h1>Listings</h1>
-<div class="">
+<article class="main">
+  <h1>Browse Listings</h1>
   <% allListings.forEach(function(listing){ %>
-    <a href="/listings/view/<%= listing.id %>">
-    <article>
-      <div class="title">
-        <h2><%= listing.dataValues.name %></h2>
-      </div>
-      <div class="price">
-        <p>£<%= listing.dataValues.price %>/night</p>
-      </div>
+    <div class="single-listing">
       <div class="image">
-        <img src=<%= listing.dataValues.image %>>
+        <img src=<%= listing.dataValues.image %> height="175" width="250">
       </div>
-      <% }); %>
-    </article>
-    </a>
-  </div>
+      <div class="text-content">
+        <div class="title">
+          <h3><%= listing.dataValues.name %></h3>
+        </div>
+        <div class="price">
+          <h3>£<%= listing.dataValues.price %>/night</h3>
+        </div>
+      </div>
+    </div>
+  <% }); %>
+</article>
 
-  <h1> Add a new listing </h1>
-  <form action="/listings/new" method="post">
-    <input placeholder="Name" name="name" />
-    <textarea placeholder="Description" name="description"></textarea>
-    <input placeholder="Price per night" type="number" name="price" />
-    <input placeholder="Image" name="image" />
-    <input type="submit" class="submit" value="Create listing" />
-  </form>
-
-
-
-    <h3>My Google Maps Demo</h3>
-    <div id="map"></div>
-    <script>
-      function initMap() {
-        var uluru = {lat: -25.363, lng: 131.044};
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 4,
-          center: uluru
-        });
-        var marker = new google.maps.Marker({
-          position: uluru,
-          map: map
-        });
-      }
-    </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmtuk4XTo71L-oIuRyev_sSkQ2-xnYlTA&callback=initMap">
-    </script>
-
-  <% include ./partials/footer.ejs %>
 </body>
 
 </html>

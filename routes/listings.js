@@ -55,7 +55,7 @@ router.post('/updated/:listing_id', function(req,res){
 router.get('/new', function(req, res) {
   sess = req.session;
   models.Listing.findAll({}).then(function(listings) {
-    res.json(listing);
+    res.render('listings/new', {sess: sess});
   });
 });
 
