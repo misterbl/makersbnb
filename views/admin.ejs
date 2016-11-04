@@ -2,56 +2,41 @@
 <html>
 <head>
   <title>MakersBnB</title>
+  <link rel="stylesheet" href="/stylesheets/style.css" media="screen" title="no title">
+  <link rel="stylesheet" href="/stylesheets/home.css" media="screen" title="no title">
+  <link rel="stylesheet" href="/stylesheets/admin.css" media="screen" title="no title">
 <script>
 $(document).ready(function(){
-    var email,pass;
-    $("#submit").click(function(){
-        email=$("#email").val();
-        pass=$("#password").val();
-        /*
-        * Perform some validation here.
-        */
-        $.post("http://localhost:3000/login",{email:email,pass:pass},function(data){
-            if(data==='done')
-            {
-                window.location.href="/admin";
-            }
-        });
+  var email,pass;
+  $("#submit").click(function(){
+    email=$("#email").val();
+    pass=$("#password").val();
+    /*
+    * Perform some validation here.
+    */
+    $.post("http://localhost:3000/login",{email:email,pass:pass},function(data){
+      if(data==='done')
+      {
+        window.location.href="/admin";
+      }
     });
+  });
 });
 </script>
 <% include ./partials/header.ejs %>
 </head>
   <body>
-
-  Welcome back <%= user.firstname %>. This is your admin page:
-  <div id="calendar">
-<% listings.forEach(function(listing) { %>
-  <ul style="list-style: none;">
-<ol> <img height="25%" width="25%" src=<%= listing.image %>></ol>
-<ol><%= listing.name %></ol><br>
-<ol>Description:<br><%= listing.description %></ol><br>
-<ol>price per night: £<%= listing.price %></ol>
-<ol>new booking: from <%= listing.booking_from %> to <%= listing.booking_until %> by <%= listing.booking_email%></ol>
-<ol><form action="/listings/update/<%= listing.id %>">
-      <input class="submit" type="submit" value="Update" />
-</form></ol>
-<ol><form action="/listings/delete/<%= listing.id %>">
-      <input class="submit" type="submit" value="Delete" />
-    </form></ol>
-</ul>
-<% }); %>
-<iframe width="638" height="380" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" allowtransparency="true" src="https://secure.booksterhq.com/book/118022?embedded=1"></iframe>
-
-
-        <h1> Add a new listing </h1>
-         <form action="/listings/new" method="post">
-             <input placeholder="Name" name="name" />
-             <textarea placeholder="Description" name="description"></textarea>
-             <input placeholder="Price per night" type="number" name="price" />
-             <input placeholder="Image" name="image" />
-           <input class="submit" type="submit" value="Create listing" />
-         </form>
+    <div id="colorful">
+      <h2>Welcome back <%= user.firstname %>. This is your admin page:</h2>
+      <h1> Add a new listing </h1>
+    </div>
+     <form action="/listings/new" method="post">
+       <input placeholder="Name" name="name" class="text-form" size="100"/>
+       <textarea placeholder="Description" name="description" class="text-form" size="100"></textarea>
+       <input placeholder="Price per night" type="number" name="price" class="text-form" size="100"/>
+       <input placeholder="Image" name="image" class="text-form" size="100"/>
+       <input class="button" type="submit" value="Create listing" />
+     </form>
   <% include ./partials/footer.ejs %>
   </body>
   </html>
