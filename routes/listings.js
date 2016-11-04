@@ -21,7 +21,7 @@ router.get('/view/:listing_id', function(req, res) {
   var user;
   models.Listing.find({where: { id: req.params.listing_id}}).then(function(listing) {
     models.User.find({where: {id: listing.user_id}}).then(function(user){
-    res.render('listing', {listing: listing, user: user});});
+    res.render('listing', {listing: listing, user: user, sess: sess});});
   });
 });
 
@@ -29,7 +29,7 @@ router.get('/update/:listing_id', function(req, res) {
   var sess = req.session;
   var listing;
    models.Listing.find({where: {id: req.params.listing_id }}).then(function(listing){
-     res.render('listing_update', {listing: listing});
+     res.render('listing_update', {listing: listing, sess: sess});
    });
  });
 
@@ -75,12 +75,24 @@ router.post('/new', function(req, res) {
 });
 
 router.post('/book/:listing_id', function(req, res) {
+  sess = req.session;
   var listing;
   var user;
-  models.Listing.find({where: { id: req.params.listing_id}}).then(function(listing) {
-      listing.update({booking_from: req.body.checkin, booking_until: req.body.checkout, booking_email: sess.email}).then(function() {
-          models.User.find({ where: { email: sess.email } }).then(function(user) {
-    res.render('listing', {listing: listing, user: user});});
+  var booking;
+  models.Booking.create({
+    checkin: req.body.checkin,
+    checkout:req.body.checkout,
+    email: sess.email,
+    listing_id: req.params.listing_id,
+  }).then(function(booking){
+      models.Listing.find({where: { id: req.params.listing_id}}).then(function(listing) {
+        models.User.find({ where: { email: sess.email } }).then(function(user) {
+    res.render('listing', {listing: listing, user: user, booking: booking, sess: sess});
+   });
+  // models.Listing.find({where: { id: req.params.listing_id}}).then(function(listing) {
+  //     listing.update({booking_from: req.body.checkin, booking_until: req.body.checkout, booking_email: sess.email}).then(function() {
+  //         models.User.find({ where: { email: sess.email } }).then(function(user) {
+  //   res.render('listing', {listing: listing, user: user});});
   });
     });
       });

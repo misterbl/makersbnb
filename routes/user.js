@@ -4,6 +4,7 @@ var models = require('../models');
 var Listing = require('../models').Listing;
 var User = require('../models').User;
 var session = require('express-session');
+var async = require('async');
 var sess;
 
 
@@ -12,13 +13,32 @@ router.get('/', function(req, res) {
   res.redirect('/user/my_account');
 });
 
-router.get('/my_account', function(req, res) {
+router.get('/my_account/', function(req, res) {
   sess = req.session;
   var user;
   var listings;
+  var bookings;
+
   models.User.find({ where: { email: sess.email } }).then(function(user) {
-    models.Listing.findAll({ where: { user_id: user.id } }).then(function(listings) {
-      res.render('admin', {user: user, listings: listings, sess: sess
+    models.Booking.findAll({ where: { email: sess.email} }).then(function(bookings) {
+      models.Listing.findAll({where: {user_id: user.id }}).then(function(listings) {
+        res.render('admin', {user: user, listings: listings, sess: sess, bookings: bookings});
+      });
+    });
+  });
+});
+
+router.post('/my_account/requests', function(req, res){
+  sess = req.session;
+  var user;
+  var listings;
+  var mybookings;
+  models.User.find({ where: { email: sess.email } }).then(function(user) {
+    models.Listing.findAll({where: {user_id: user.id }}).then(function(listings){
+      async.map(listings, function(listing, mybookings){
+        models.Booking.findAll({where: {listing_id: listing.id}}).then(function(mybookings){console.log(mybookings);
+          res.render('myrequests', {user: user, sess: sess, listings: listings, mybookings: mybookings });
+        });
       });
     });
   });
@@ -46,7 +66,7 @@ router.post('/new', function(req, res) {
       res.redirect('/user');
     }
     else {
-      res.render('user_exists');
+      res.render('user_exists', {sess: sess});
     }
   });
 });
