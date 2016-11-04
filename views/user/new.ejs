@@ -6,14 +6,15 @@
   <body>
     <% include ../partials/header.ejs %>
 
-    <form action="/user/new" method="post">
-      <input placeholder="UserName" name="username" />
-      <input placeholder="Email" name="email" />
-      <input placeholder="Firstname" name="firstname" />
-      <input placeholder="Lastname" name="lastname" />
-      <input placeholder="Password" name="password" />
-      <input class="submit" type="submit" value="Create user" />
-    </form>
-
+    <div class="form-content">
+      <form action="/user/new" method="post" class="text-form">
+        <input placeholder="UserName" name="username" class="text-form"/>
+        <input placeholder="Email" name="email"  class="text-form"/>
+        <input placeholder="Firstname" name="firstname" class="text-form"/>
+        <input placeholder="Lastname" name="lastname" class="text-form"/>
+        <input placeholder="Password" name="password" class="text-form"/>
+        <input class="submit" type="submit" value="Create user" class="text-form"/>
+      </form>
+    </div>
   </body>
 </html>
