@@ -1,0 +1,79 @@
+body {
+  margin: 42px;
+  padding: 5px;
+  margin-bottom: 0px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.showcase-image {
+  margin: -20px;
+  padding: -20px;
+}
+
+#colorful {
+  color: #ff5a60;
+  margin-top: 25%;
+  margin-bottom: 10%;
+}
+
+#colorful h1 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.showcase-listing {
+  margin: -20px;
+  margin-left: 10px;
+  margin-right: -0px;
+  margin-bottom: -70px;
+  padding: -20px;
+  height: 50%;
+  padding-left: 50px;
+}
+
+.inspire-text {
+  height: 30%;
+  width: 100%;
+}
+
+.homepage-buttons {
+  display: flex;
+  justify-content: left;
+  flex-direction: column;
+  margin-right: 0px;
+  padding-right: 100px;
+  height: 70%;
+}
+
+.main-content {
+  display: flex;
+  margin: 20px;
+  margin-bottom: 0px;
+  margin-left: 10%;
+  margin-right: 15%;
+  padding: 0px;
+  height: 100%;
+}
+
+.content-left {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  margin: 10px;
+  margin-left: -50px;
+  margin-top: -100px;
+  width: 50%;
+  height: 100%;
+}
+
+.content-right {
+  display: flex;
+  height: 530px;
+  padding: 10px;
+  margin: 10px;
+  width: 50%;
+  border-left-style: solid;
+  border-width: 1px;
+  border-color: #c1c1c1;
+}

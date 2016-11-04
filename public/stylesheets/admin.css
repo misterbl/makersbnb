@@ -1,0 +1,38 @@
+textarea {
+  border-style: solid;
+  border-color: #c1c1c1;
+  border-width: 1px;
+  margin: -1px;
+  width: 95%;
+  color: #666666;
+}
+
+
+#colorful {
+  color: #ff5a60;
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+
+#colorful h1,
+#colorful h2 {
+  margin-top: 0;
+  margin-bottom: 0;
+  display: block;
+}
+
+#colorful,
+.form-content {
+  display: flex;
+  margin: 0 15%;
+  justify-content: center;
+}
+
+.price-form {
+  width: 95%;
+}
+
+.greeting {
+  color: #ff5a60;
+  text-align: center;
+}

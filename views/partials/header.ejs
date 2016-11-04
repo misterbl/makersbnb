@@ -2,7 +2,7 @@
 <html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,800i" rel="stylesheet">
-
+<link rel="stylesheet" href="/stylesheets/style.css" media="screen" title="no title">
 
 <div class="navbar">
   <a href='/'><img src="https://s16.postimg.org/7x25s7vyd/logo.png"
@@ -11,86 +11,31 @@
     <% if(sess.email === undefined) { %>
       <div class="nav-buttons">
         <form action="/listings">
-          <input id="nav-button" type="submit" value="Listings" />
+          <input class="nav-button" type="submit" value="Listings" />
         </form>
         <form action="/user/new">
-          <input id="nav-button" type="submit" value="Sign up" />
+          <input class="nav-button" type="submit" value="Sign up" />
         </form>
         <form action="/login">
-          <input id="nav-button" type="submit" value="Sign in" />
+          <input class="nav-button" type="submit" value="Sign in" />
         </form>
       </div>
     <% } %>
     <% if(sess.email !== undefined) { %>
       <div class="nav-buttons">
         <form action="/listings/new">
-          <input id="nav-button" type="submit" value="Become a host!" />
+          <input class="nav-button" type="submit" value="New Listing" />
         </form>
         <form action="/listings">
-          <input id="nav-button" type="submit" value="View listings" />
+          <input class="nav-button" type="submit" value="View listings" />
         </form>
         <form action="/user">
-          <input id="nav-button" type="submit" value="My Account" />
+          <input class="nav-button" type="submit" value="My Account" />
         </form>
         <form action="/logout">
-          <input id="nav-button" type="submit" value="Sign out" />
+          <input class="nav-button" type="submit" value="Sign out" />
         </form>
       </div>
     <% } %>
   </div>
 </html>
-
-<style>
-
-body {
-  margin: 42px;
-  padding: 5px;
-  font-family: 'Open Sans', sans-serif;
-}
-
-.navbar {
-  position: absolute;
-  margin-top: -1px;
-  margin-left: -1px;
-  right: 0px;
-  left: 0px;
-  top: 0px;
-  display: flex;
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  border-bottom-color: #c1c1c1;
-  height: 2.6em;
-  width: 100%;
-}
-
-div.nav-buttons {
-  position: absolute;
-  right: 0px;
-  top: 0px;
-}
-
-form {
-  float: right;
-}
-
-input {
-  border-style: solid;
-  border-color: #c1c1c1;
-  border-width: 1px;
-  margin: -1px;
-  color: #666666;
-}
-
-input#nav-button {
-  background-color: white;
-  font-size: 0.8em;
-  height: 43.5px;
-  width: 100px;
-}
-
-input#nav-button:hover {
-  background-color: #e5e5e5;
-}
-
-
-</style>
