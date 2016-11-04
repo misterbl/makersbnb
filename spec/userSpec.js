@@ -17,7 +17,6 @@ describe ('User', function () {
         lastname: 'Spanish',
         password: 'password2016'
     });
-    // console.log(user._boundTo.dataValues.username);
     expect(user._boundTo.dataValues.username).toBe("Blanca");
 });
 
