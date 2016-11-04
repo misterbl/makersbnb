@@ -17,8 +17,7 @@ router.get('/my_account', function(req, res) {
   var listings;
   models.User.find({ where: { email: sess.email } }).then(function(user) {
     models.Listing.findAll({ where: { user_id: user.id } }).then(function(listings) {
-      res.render('admin', {user: user, listings: listings
-      });
+      res.render('admin', {user: user, listings: listings});
     });
   });
 });
