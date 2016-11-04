@@ -7,16 +7,16 @@ var session = require('express-session');
 
 
 router.get('/', function(req, res) {
-  sess = req.session;
+  var sess = req.session;
   var allListings;
   models.Listing.findAll({}).then(function(listings){
     allListings = listings;
-    res.render('index.ejs', {allListings: allListings});
-    console.log(allListings);
+    res.render('index.ejs', {allListings: allListings, sess: sess});
   });
 });
 
 router.get('/view/:listing_id', function(req, res) {
+  var sess = req.session;
   var listing;
   var user;
   models.Listing.find({where: { id: req.params.listing_id}}).then(function(listing) {
@@ -26,6 +26,7 @@ router.get('/view/:listing_id', function(req, res) {
 });
 
 router.get('/update/:listing_id', function(req, res) {
+  var sess = req.session;
   var listing;
    models.Listing.find({where: {id: req.params.listing_id }}).then(function(listing){
      res.render('listing_update', {listing: listing});
@@ -33,13 +34,15 @@ router.get('/update/:listing_id', function(req, res) {
  });
 
 router.get('/delete/:listing_id', function(req, res) {
- var listing;
+  var sess = req.session;
+  var listing;
   models.Listing.destroy({where: {id: req.params.listing_id }}).then(function(listing){
     res.redirect('/user');
   });
 });
 
 router.post('/updated/:listing_id', function(req,res){
+  sess = req.session;
   var listing;
   models.Listing.find({where: {id: req.params.listing_id }}).then(function(listing){
     listing.update({name: req.body.name, description: req.body.description,
@@ -49,13 +52,15 @@ router.post('/updated/:listing_id', function(req,res){
   });
 });
 
-router.get('/new_listing', function(req, res) {
+router.get('/new', function(req, res) {
+  sess = req.session;
   models.Listing.findAll({}).then(function(listings) {
     res.json(listing);
   });
 });
 
-router.post('/new_listing', function(req, res) {
+router.post('/new', function(req, res) {
+  sess = req.session;
   var user;
   models.User.find({ where: { email: sess.email } }).then(function(user){
     var listing = models.Listing.create({

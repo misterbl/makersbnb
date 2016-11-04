@@ -7,7 +7,8 @@ module.exports = function(sequelize, DataTypes) {
     image: DataTypes.STRING,
     booking_from: DataTypes.STRING,
     booking_until: DataTypes.STRING,
-    booking_email: DataTypes.STRING
+    booking_email: DataTypes.STRING,
+    location: DataTypes.STRING
   },
   {
     classMethods: {

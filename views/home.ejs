@@ -1,51 +1,144 @@
 <!DOCTYPE html>
 <html>
- <head>
- <meta name="viewport" content="width=device-width, initial-scale=1">
- <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
- <style rel="stylesheet" src="../public/stylesheets/home.css"/>
- <style>
- .main-content {
-   width: 50%;
-   height: 100%;
-   border-color: red;
- }
- </style>
-   <title>MakersBnB</title>
-   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
- <script>
- $(document).ready(function(){
-     var email,pass;
-     $("#submit").click(function(){
-         email=$("#email").val();
-         pass=$("#password").val();
-         /*
-         * Perform some validation here.
-         */
-         $.post("http://localhost:3000/login",{email:email,pass:pass},function(data){
-             if(data==='done')
-             {
-                 window.location.href="/admin";
-             }
-         });
-     });
- });
- </script>
- </head>
+  <head>
+    <title>MakersBnB</title>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script>
+  $(document).ready(function(){
+      var email,pass;
+      $("#submit").click(function(){
+          email=$("#email").val();
+          pass=$("#password").val();
+          /*
+          * Perform some validation here.
+          */
+          $.post("http://localhost:3000/login",{email:email,pass:pass},function(data){
+              if(data==='done')
+              {
+                  window.location.href="/user";
+              }
+          });
+      });
+  });
+  </script>
+  </head>
 
- <body>
-   <div class="row">
-     <div class="col-md-8 quarter">
-       <h1 class="jumbotron" style="font-size: 4em; text-align: center;">Prepare to be <br>amazed!</h1>
-     </div>
-     <div class="col-md-8 quarter">
-       <a class="btn btn-default btn-lg btn-info center-block" href="/listings" role="button" style="display: block; width: 10%;">Listings</a><br>
-       <a class="btn btn-default btn-lg center-block" href="/signin" role="button" style="display: block; width: 10%;">Sign in</a><br>
-       <a class="btn btn-default btn-lg center-block" href="/signup" role="button" style="display: block; width: 10%;">Sign up</a><br>
-     </div>
-     <div class="col-md-4">
-     </div>
-   </div>
- </body>
+  <body>
+    <% include ./partials/header.ejs %>
+    <article class="main-content">
+      <div class="content-left">
+        <div class="inspire-text">
+          <div id="colorful">
+            <h1>Go there.</h1>
+          </div>
+          <h2>Book the holiday of a lifetime</h2>
+        </div>
+        <div class="homepage-buttons">
+          <form action="/listings">
+            <input type="submit" id="button" value="Explore properties"/>
+          </form>
+          <form action="/user/new">
+            <input type="submit" id="button" value="Sign up"/>
+          </form>
+          <form action="/login">
+            <input type="submit" id="button" value="Sign in"/>
+          </form>
+        </div>
+      </div>
+      <div class="content-right">
+        <h2 class="explore">Explore by city:</h2>
+        <div class="showcase-listing">
+          <h3><%= listingOne.location %></h3>
+          <img id="showcase-image" height="175" width="250" src=<%= listingOne.image %> >
+        </div>
+        <div class="showcase-listing">
+          <h3><%= listingTwo.location %></h3>
+          <img id="showcase-image" height="175" width="250" src=<%= listingTwo.image %> >
+        </div>
+      </div>
+    </article>
+  </body>
+>>>>>>> master
 </html>
+
+<style>
+
+h1 {
+  font-style: italic;
+  font-weight: 400;
+  font-size: 4em;
+}
+
+h2.explore {
+  margin-top: -15px;
+  text-align: center;
+}
+
+#colorful {
+  color: #ff5a60;
+}
+
+.showcase-image {
+  height: 100px;
+  width: 100px;
+}
+
+.showcase-listing {
+  height: 50%;
+  padding-left: 50px;
+}
+
+.inspire-text {
+  height: 30%;
+}
+
+.homepage-buttons {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: -0.2em;
+  height: 70%;
+}
+
+#button {
+  width: 15em;
+  height: 4em;
+  margin: 5px;
+  background-color: #ff5a60;
+  color: white;
+  border-radius: 1px;
+  border-color: grey;
+}
+
+#button:hover {
+  background-color: #ff7a7f;
+}
+
+.main-content {
+  display: flex;
+  margin: 20px;
+  margin-bottom: 5px;
+  margin-left: 15%;
+  margin-right: 15%;
+  padding: 0px;
+  height: 100%;
+}
+
+.content-left {
+  padding: 10px;
+  margin: 10px;
+  width: 60%;
+  height: 100%;
+}
+
+.content-right {
+  height: 530px;
+  padding: 10px;
+  margin: 10px;
+  width: 40%;
+  border-left-style: solid;
+  border-width: 1px;
+  border-color: #c1c1c1;
+}
+
+</style>

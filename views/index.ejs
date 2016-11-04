@@ -35,11 +35,7 @@
 
 
   <h1>Please Login</h1>
-  <form action="/login" method="post">
-    <input placeholder="Email" type="email" name='email'/>
-    <input placeholder="Password" name='password'/>
-    <input class="submit" type='submit' value='Login'/>
-  </form>
+
 </div>
 
 <h1>Listings</h1>
@@ -61,19 +57,8 @@
     </a>
   </div>
 
-  <h1>Create new acount</h1>
-  <form action="/user/create" method="post">
-    <input placeholder="UserName" name="username" />
-    <input placeholder="Email" name="email" />
-    <input placeholder="Firstname" name="firstname" />
-    <input placeholder="Lastname" name="lastname" />
-    <input placeholder="Password" name="password" />
-    <input class="submit" type="submit" value="Create user" />
-  </form>
-
-
   <h1> Add a new listing </h1>
-  <form action="/listings/new_listing" method="post">
+  <form action="/listings/new" method="post">
     <input placeholder="Name" name="name" />
     <textarea placeholder="Description" name="description"></textarea>
     <input placeholder="Price per night" type="number" name="price" />

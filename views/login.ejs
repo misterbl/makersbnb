@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sign in</title>
+  </head>
+  <body>
+    <% include ./partials/header.ejs %>
+    <form action="/login" method="post">
+      <input placeholder="Email" type="email" name='email'/>
+      <input placeholder="Password" name='password'/>
+      <input class="submit" type='submit' value='Login'/>
+    </form>
+  </body>
+</html>

@@ -16,7 +16,7 @@
   "production": {
     "username": null,
     "password": null,
-    "database": "makersbnb_production",
+    "database": "postgresql-graceful-58818",
     "host": "127.0.0.1",
     "dialect": "postgres"
   }

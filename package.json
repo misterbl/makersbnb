@@ -27,6 +27,12 @@
     "validator": "^6.1.0"
   },
   "devDependencies": {
-    "nodemon": "^1.11.0"
+    "chai": "^3.5.0",
+    "database-cleaner": "^1.1.0",
+    "mocha": "^3.1.2",
+    "nodemon": "^1.11.0",
+    "request": "^2.76.0",
+    "sinon": "^1.17.6",
+    "zombie": "^5.0.0"
   }
 }
