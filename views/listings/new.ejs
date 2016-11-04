@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Host a property</title>
+</head>
+<body>
+  <% include ../partials/header.ejs %>
+  <article class="main-content">
+    <form action="/listings/new" method="post">
+      <input placeholder="Name" name="name" />
+      <textarea placeholder="Description" name="description"></textarea>
+      <input placeholder="Price per night" type="number" name="price" />
+      <input placeholder="Image" name="image" />
+      <input type="submit" class="submit" value="Create listing" />
+    </form>
+  </article>
+</body>
+</html>

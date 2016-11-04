@@ -5,15 +5,18 @@
   </head>
   <body>
     <% include ../partials/header.ejs %>
-
-    <form action="/user/new" method="post">
-      <input placeholder="UserName" name="username" />
-      <input placeholder="Email" name="email" />
-      <input placeholder="Firstname" name="firstname" />
-      <input placeholder="Lastname" name="lastname" />
-      <input placeholder="Password" name="password" />
-      <input class="submit" type="submit" value="Create user" />
-    </form>
-
+    <div class="form-content">
+      <form action="/user/new" method="post" class="text-form">
+        <div class="form-header">
+          <h1>Sign up</h1>
+        </div>
+        <input placeholder="UserName" name="username" class="text-form" size="100"/>
+        <input placeholder="Email" name="email"  class="text-form" size="100"/>
+        <input placeholder="Firstname" name="firstname" class="text-form" size="100"/>
+        <input placeholder="Lastname" name="lastname" class="text-form" size="100"/>
+        <input placeholder="Password" name="password" class="text-form" size="100"/>
+        <input class="button" type="submit" value="Create user"/>
+      </form>
+    </div>
   </body>
 </html>
