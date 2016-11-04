@@ -44,6 +44,23 @@ $(document).ready(function(){
 <iframe width="638" height="380" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" allowtransparency="true" src="https://secure.booksterhq.com/book/118022?embedded=1"></iframe>
 
 
+My current bookings made
+<div>
+  <% bookings.forEach(function(booking) { %>
+    <ul style="list-style: none;">
+  <ol><%= booking.listing_id %></ol><br>
+  <ol>from<%= booking.checkin %></ol>
+  <ol>to <%= booking.checkout %></ol>
+  <ol>price per night: £<%= booking.price %></ol>
+  </ul>
+  <% }); %>
+</div>
+
+<form action="/user/my_account/requests" method="post">
+  <input type="submit" value="My requests" />
+</form>
+
+
         <h1> Add a new listing </h1>
          <form action="/listings/new" method="post">
              <input placeholder="Name" name="name" />
