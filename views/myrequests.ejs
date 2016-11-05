@@ -2,43 +2,47 @@
 <html>
 <head>
   <title>MakersBnB</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <link rel="stylesheet" href="/stylesheets/style.css" media="screen" title="no title">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="javascripts/auth.js"></script>
 <script>
-$(document).ready(function(){
-    var email,pass;
-    $("#submit").click(function(){
-        email=$("#email").val();
-        pass=$("#password").val();
-        /*
-        * Perform some validation here.
-        */
-        $.post("http://localhost:3000/login",{email:email,pass:pass},function(data){
-            if(data==='done')
-            {
-                window.location.href="/admin";
-            }
-        });
-    });
-});
+function acceptConfirmation() {
+    alert("Booking accepted!");
+}
+function rejectConfirmation() {
+    alert("Booking rejected!");
+}
 </script>
+<style>
+  body {
+    border-left-style: solid;
+    border-width: 1px;
+    border-color: #c1c1c1;
+  }
+  ol {
+    font-size:1em;
+    color: grey;
+  }
+  
+</style>
 <% include ./partials/header.ejs %>
 </head>
   <body>
 
-My current bookings received
+<h2 style="font-size: 3em; color: #ff5a60">My current received bookings<h2>
 <div>
   <% mybookings.forEach(function(mybooking){ %>
     <ul style="list-style: none;">
-  <ol><%= mybooking.listing_id %></ol><br>
-  <ol>from <%= mybooking.checkin %></ol>
-  <ol>to <%= mybooking.checkout %></ol>
-  <ol>price per night: £<%= mybooking.price %></ol>
-  <ol>to <%= mybooking.email %></ol>
+  <ol class="centered">Listing number: <%= mybooking.listing_id %></ol>
+  <ol class="centered">From: <%= mybooking.checkin %> to: <%= mybooking.checkout %></ol>
+  <ol class="centered">Contact email: <%= mybooking.email %></ol>
   <ol><form method="post" action="/booking/accept/<%= mybooking.id %>">
-  <input class="submit" type="submit" value="Accept booking" />
+  <input class="buttons" type="submit" value="Accept booking" onclick="acceptConfirmation()" />
   </form></ol>
   <ol><form method="post" action="/booking/reject/<%= mybooking.id %>">
-  <input class="submit" type="submit" value="Reject Booking" />
-  </form></ol>
+  <input class="buttons" type="submit" value="Reject Booking" onclick="rejectConfirmation()" />
+</form><br><br><br><br></ol>
   </ul>
   <% }); %>
 </div>

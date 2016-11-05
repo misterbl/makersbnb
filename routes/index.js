@@ -51,7 +51,7 @@ router.post('/booking/accept/:booking_id', function(req, res) {
           sess = req.session;
           var user;
           var booking;
-          models.Booking.findAll({where: {id: req.params.booking_id }}).then(function(booking) {
+          models.Booking.find({where: {id: req.params.booking_id }}).then(function(booking) {
             booking.update({accepted: false}).then(function(){
                   res.redirect('/user/my_account');
             });

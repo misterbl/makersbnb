@@ -10,46 +10,51 @@
   </head>
 
   <body>
-
+    <div class="greeting">
+      <h2 style="font-size: 2em">Welcome back <%= user.firstname %>!</h2><br>
+    </div>
+    <div>
+      <% if (listings.length > 0) { %>
+      <h2 id="colorful" style="font-size: 3em">Your current listings:</h2>
       <% listings.forEach(function(listing) { %>
     <ul style="list-style: none;">
       <ol> <img height="25%" width="25%" src=<%= listing.image %>></ol>
       <ol><%= listing.name %></ol><br>
       <ol>Description:<br><%= listing.description %></ol><br>
       <ol>price per night: £<%= listing.price %></ol>
-      <ol><form action="/listings/update/<%= listing.id %>">
-        <input class="submit" type="submit" value="Update" />
+      <ol style="margin-right:30em"><form action="/listings/update/<%= listing.id %>">
+        <input class="buttons" type="submit" value="Update" />
       </form></ol>
       <ol><form action="/listings/delete/<%= listing.id %>">
-        <input class="submit" type="submit" value="Delete" />
+        <input class="buttons" type="submit" value="Delete" />
       </form></ol>
-    </ul>
+    </ul><br><br>
       <% }); %>
+      <% } %>
+    </div>
     <div>
-      <h2>My current bookings made</h2>
+      <% if (bookings.length > 0) { %>
+      <h2 id="colorful">My current bookings made:</h2>
       <% bookings.forEach(function(booking) { %>
       <ul style="list-style: none;">
-        <ol><%= booking.listing_id %></ol><br>
-        <ol>from<%= booking.checkin %></ol>
-        <ol>to <%= booking.checkout %></ol>
-        <ol>price per night: £<%= booking.price %></ol>
+        <ol>Listing number: <%= booking.listing_id %>.     From <%= booking.checkin %> to <%= booking.checkout %></ol>
         <ol><% if(booking.accepted){ %>
-        <p> booking accepted, you will soon receive a confirmation email</p>
+        <p>Booking accepted. You will soon receive a confirmation email</p>
           <% } else if (booking.accepted === false) { %>
-        <p> booking declined, you will soon receive an explanation email</p>
+        <p>Booking declined. You will soon receive an explanation email</p>
           <% } else { %>
-        <p> booking's acceptation pending</p>
+        <p>Booking's acceptation pending</p>
           <% } %>
         </ol>
-      </ul>
+      </ul><br>
     <% }); %>
-  </div>
+    <% }; %>
+  </div><br>
+  <div style="margin-right:53em">
   <form action="/user/my_account/requests" method="post">
-    <input type="submit" value="My requests" />
+    <input class="buttons"type="submit" value="My requests" />
   </form>
-    <div class="greeting">
-      <h2>Welcome back <%= user.firstname %>. This is your admin page.</h2>
-    </div>
+</div><br><br><br>
     <div id="colorful">
       <h1> Add a new listing </h1>
     </div>
