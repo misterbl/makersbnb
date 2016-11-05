@@ -13,18 +13,17 @@ function acceptConfirmation() {
 function rejectConfirmation() {
     alert("Booking rejected!");
 }
+function deleteConfirmation() {
+    alert("Booking deleted!");
+}
 </script>
 <style>
-  body {
-    border-left-style: solid;
-    border-width: 1px;
-    border-color: #c1c1c1;
-  }
+
   ol {
     font-size:1em;
     color: grey;
   }
-  
+
 </style>
 <% include ./partials/header.ejs %>
 </head>
@@ -33,7 +32,7 @@ function rejectConfirmation() {
 <h2 style="font-size: 3em; color: #ff5a60">My current received bookings<h2>
 <div>
   <% mybookings.forEach(function(mybooking){ %>
-    <ul style="list-style: none;">
+    <ul class="single-listing" style="list-style: none;">
   <ol class="centered">Listing number: <%= mybooking.listing_id %></ol>
   <ol class="centered">From: <%= mybooking.checkin %> to: <%= mybooking.checkout %></ol>
   <ol class="centered">Contact email: <%= mybooking.email %></ol>
@@ -42,7 +41,10 @@ function rejectConfirmation() {
   </form></ol>
   <ol><form method="post" action="/booking/reject/<%= mybooking.id %>">
   <input class="buttons" type="submit" value="Reject Booking" onclick="rejectConfirmation()" />
-</form><br><br><br><br></ol>
+  </form>
+  <ol><form method="post" action="/booking/delete/<%= mybooking.id %>">
+  <input class="buttons" type="submit" value="Delete Booking" onclick="deleteConfirmation()" />
+  </form><br><br><br><br></ol>
   </ul>
   <% }); %>
 </div>

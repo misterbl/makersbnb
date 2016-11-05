@@ -25,39 +25,46 @@ router.get('/login', function(req, res) {
 
 router.post('/login',function(req,res){
   sess = req.session;
-    return models.User.count({ where: { email: req.body.email } && { password: req.body.password } })
-      .then(count => {
-        if (count !== 0) {
-          sess.email=req.body.email;
-          res.redirect('/user');
-        }
-        res.render('login_error', {
-          sess: sess
-        });
+  return models.User.count({ where: { email: req.body.email } && { password: req.body.password } })
+  .then(count => {
+    if (count !== 0) {
+      sess.email=req.body.email;
+      res.redirect('/user');
+    }
+    res.render('login_error', {
+      sess: sess
     });
+  });
 });
 
 router.post('/booking/accept/:booking_id', function(req, res) {
+  sess = req.session;
+  var user;
+  var booking;
+  models.Booking.find({where: {id: req.params.booking_id }}).then(function(booking) {
+    booking.update({accepted: true}).then(function(){
+      res.redirect('/user/my_account');
+    });
+  });
+});
+  router.post('/booking/reject/:booking_id', function(req, res) {
     sess = req.session;
     var user;
     var booking;
     models.Booking.find({where: {id: req.params.booking_id }}).then(function(booking) {
-      booking.update({accepted: true}).then(function(){
-            res.redirect('/user/my_account');
+      booking.update({accepted: false}).then(function(){
+        res.redirect('/user/my_account');
       });
+    });
+  });
+
+  router.post('/booking/delete/:booking_id', function(req, res) {
+    sess = req.session;
+    var user;
+    var booking;
+    models.Booking.destroy({where: {id: req.params.booking_id }}).then(function(booking) {
+        res.redirect('/user/my_account');
       });
-
-      router.post('/booking/reject/:booking_id', function(req, res) {
-          sess = req.session;
-          var user;
-          var booking;
-          models.Booking.find({where: {id: req.params.booking_id }}).then(function(booking) {
-            booking.update({accepted: false}).then(function(){
-                  res.redirect('/user/my_account');
-            });
-            });
-            });
-
 });
 
 

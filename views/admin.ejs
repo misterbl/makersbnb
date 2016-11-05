@@ -17,27 +17,37 @@
       <% if (listings.length > 0) { %>
       <h2 id="colorful" style="font-size: 3em">Your current listings:</h2>
       <% listings.forEach(function(listing) { %>
-    <ul style="list-style: none;">
-      <ol> <img height="25%" width="25%" src=<%= listing.image %>></ol>
-      <ol><%= listing.name %></ol><br>
-      <ol>Description:<br><%= listing.description %></ol><br>
-      <ol>price per night: £<%= listing.price %></ol>
+        <div class="single-listing">
+          <a href="/listings/view/<%= listing.id %>">
+          <div class="image">
+            <img src=<%= listing.dataValues.image %> height="175" width="250">
+          </div>
+          </a>
+          <div class="text-content">
+            <div class="title">
+              <h3><%= listing.dataValues.name %></h3>
+            </div>
+            <div class="price">
+              <h3>£<%= listing.dataValues.price %>/night</h3>
+            </div>
+          </div>
+        </div>
       <ol style="margin-right:30em"><form action="/listings/update/<%= listing.id %>">
         <input class="buttons" type="submit" value="Update" />
       </form></ol>
       <ol><form action="/listings/delete/<%= listing.id %>">
         <input class="buttons" type="submit" value="Delete" />
-      </form></ol>
-    </ul><br><br>
+      </form></ol><br><br><br><br>
+    </ul>
       <% }); %>
       <% } %>
     </div>
     <div>
       <% if (bookings.length > 0) { %>
-      <h2 id="colorful">My current bookings made:</h2>
+      <br><br><h2 id="colorful">My current bookings made:</h2>
       <% bookings.forEach(function(booking) { %>
-      <ul style="list-style: none;">
-        <ol>Listing number: <%= booking.listing_id %>.     From <%= booking.checkin %> to <%= booking.checkout %></ol>
+      <ul class="single-booking"style="list-style: none;">
+        <ol><p>Listing number: <%= booking.listing_id %>.     From <%= booking.checkin %> to <%= booking.checkout %></p></ol>
         <ol><% if(booking.accepted){ %>
         <p>Booking accepted. You will soon receive a confirmation email</p>
           <% } else if (booking.accepted === false) { %>
@@ -50,7 +60,7 @@
     <% }); %>
     <% }; %>
   </div><br>
-  <div style="margin-right:53em">
+  <div style="margin-right:58em">
   <form action="/user/my_account/requests" method="post">
     <input class="buttons"type="submit" value="My requests" />
   </form>
