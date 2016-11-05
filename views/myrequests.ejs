@@ -20,7 +20,7 @@ function deleteConfirmation() {
 <style>
 
   ol {
-    font-size:1em;
+    font-size:0.7em;
     color: grey;
   }
 
@@ -32,19 +32,19 @@ function deleteConfirmation() {
 <h2 style="font-size: 3em; color: #ff5a60">My current received bookings<h2>
 <div>
   <% mybookings.forEach(function(mybooking){ %>
-    <ul class="single-listing" style="list-style: none;">
-  <ol class="centered">Listing number: <%= mybooking.listing_id %></ol>
-  <ol class="centered">From: <%= mybooking.checkin %> to: <%= mybooking.checkout %></ol>
-  <ol class="centered">Contact email: <%= mybooking.email %></ol>
+    <ul class="single-request" style="list-style: none;">
+  <ol>Listing number: <%= mybooking.listing_id %></ol>
+  <ol>From: <%= mybooking.checkin %> to: <%= mybooking.checkout %></ol>
+  <ol>Contact email: <%= mybooking.email %></ol>
   <ol><form method="post" action="/booking/accept/<%= mybooking.id %>">
   <input class="buttons" type="submit" value="Accept booking" onclick="acceptConfirmation()" />
   </form></ol>
   <ol><form method="post" action="/booking/reject/<%= mybooking.id %>">
   <input class="buttons" type="submit" value="Reject Booking" onclick="rejectConfirmation()" />
-  </form>
+  </form></ol>
   <ol><form method="post" action="/booking/delete/<%= mybooking.id %>">
   <input class="buttons" type="submit" value="Delete Booking" onclick="deleteConfirmation()" />
-  </form><br><br><br><br></ol>
+  </form></ol><br><br><br><br></ol>
   </ul>
   <% }); %>
 </div>

@@ -65,8 +65,8 @@
   <div>
     <h1 class="book" >Send a booking request online:</h1>
     <form style="margin-right: 50%;" action="/listings/book/<%= listing.id %>" method="post">
-      <input id="textboxbook" placeholder="dd/mm/yyyy" type="text"  name="checkin">
-      <input id="textboxbook" placeholder="dd/mm/yyyy" type="text"  name="checkout">
+      <input id="textboxbook" placeholder="dd/mm/yyyy" type="text"  name="checkin" required>
+      <input id="textboxbook" placeholder="dd/mm/yyyy" type="text"  name="checkout" required>
       <input style="margin-left: 20%" class="buttons" type="submit" value="Book">
     </form>
   </div>

@@ -6,6 +6,11 @@
     <link rel="stylesheet" href="/stylesheets/home.css" media="screen" title="no title">
     <link rel="stylesheet" href="/stylesheets/admin.css" media="screen" title="no title">
     <script src="javascripts/auth.js"></script>
+    <script>
+    function deleteConfirmation() {
+        alert("Booking deleted!");
+    }
+    </script>
     <% include ./partials/header.ejs %>
   </head>
 
@@ -47,7 +52,7 @@
       <br><br><h2 id="colorful">My current bookings made:</h2>
       <% bookings.forEach(function(booking) { %>
       <ul class="single-booking"style="list-style: none;">
-        <ol><p>Listing number: <%= booking.listing_id %>.     From <%= booking.checkin %> to <%= booking.checkout %></p></ol>
+        <ol><p>Listing number: <%= booking.listing_id %>.     From <%= booking.checkin %> to <%= booking.checkout %>  </p></ol>
         <ol><% if(booking.accepted){ %>
         <p>Booking accepted. You will soon receive a confirmation email</p>
           <% } else if (booking.accepted === false) { %>
@@ -56,6 +61,9 @@
         <p>Booking's acceptation pending</p>
           <% } %>
         </ol>
+        <form style="margin-left: 30%"method="post" action="/booking/delete/<%= booking.id %>">
+        <input class="buttons" type="submit" value="Delete Booking" onclick="deleteConfirmation()" />
+        </form>
       </ul><br>
     <% }); %>
     <% }; %>
