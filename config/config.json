@@ -16,7 +16,7 @@
   "production": {
     "username": null,
     "password": null,
-    "database": "postgresql-graceful-58818",
+    "database": "postgresql-rugged-17153",
     "host": "127.0.0.1",
     "dialect": "postgres"
   }
