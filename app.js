@@ -12,7 +12,7 @@ var user = require('./routes/user');
 var validator = require('validator');
 var app = express();
 var session = require('express-session');
-
+var pg = require('pg');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
