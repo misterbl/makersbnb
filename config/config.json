@@ -17,7 +17,7 @@
     "username": null,
     "password": null,
     "database": "postgresql-rectangular-33928",
-    "host": "127.0.0.1",
+    "host": "process.env.DATABASE_URL",
     "dialect": "postgres"
   }
 }
