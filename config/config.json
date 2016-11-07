@@ -14,10 +14,6 @@
     "dialect": "postgres"
   },
   "production": {
-    "username": null,
-    "password": null,
-    "database": "postgresql-rectangular-33928",
-    "host": "process.env.DATABASE_URL",
-    "dialect": "postgres"
+  "use_env_variable": "DATABASE_URL"
   }
 }

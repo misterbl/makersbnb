@@ -17,7 +17,16 @@ if (config.use_env_variable) {
 } else {
   var sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
-
+if (process.env.HEROKU_POSTGRESQL_BRONZE_URL) {
+    // the application is executed on Heroku ... use the postgres database
+    sequelize = new Sequelize(process.env.HEROKU_POSTGRESQL_BRONZE_URL, {
+      dialect:  'postgres',
+      protocol: 'postgres',
+      port:     match[4],
+      host:     match[3],
+      logging:  true //false
+    });
+  }
 fs
   .readdirSync(__dirname)
   .filter(function(file) {
@@ -28,6 +37,14 @@ fs
     db[model.name] = model;
   });
 
+  global.db = {
+      Sequelize: Sequelize,
+      sequelize: sequelize,
+      User:      sequelize.import(__dirname + '/user'),
+      Booking:      sequelize.import(__dirname + '/user'),
+      Listing:      sequelize.import(__dirname + '/listings'),
+      // add your other models here
+    };
 Object.keys(db).forEach(function(modelName) {
   if (db[modelName].associate) {
     db[modelName].associate(db);
