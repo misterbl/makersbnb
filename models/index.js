@@ -42,7 +42,7 @@ fs
       sequelize: sequelize,
       User:      sequelize.import(__dirname + '/user'),
       Booking:      sequelize.import(__dirname + '/user'),
-      Listing:      sequelize.import(__dirname + '/listings'),
+      Listing:      sequelize.import(__dirname + '/listing'),
       // add your other models here
     };
 Object.keys(db).forEach(function(modelName) {
