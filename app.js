@@ -12,8 +12,11 @@ var user = require('./routes/user');
 var validator = require('validator');
 var app = express();
 var session = require('express-session');
-
-
+var pg = require('pg')
+var port = process.env.PORT || 5000;
+app.listen(port, function() {
+  console.log("Listening on " + port);
+});
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -69,4 +72,13 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+
+pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+   console.log(err+"!!!!!!!!!!!!!!!");
+  client.query('SELECT * FROM your_table', function(err, result) {
+    done();
+    if(err) return console.error(err);
+    console.log(result.rows);
+  });
+});
 module.exports = app;
