@@ -14,6 +14,10 @@
     "dialect": "postgres"
   },
   "production": {
-  "use_env_variable": "DATABASE_URL"
+    "username": null,
+    "password": null,
+    "database": "postgresql-lively-76969",
+    "host": "process.env.DATABASE_URL",
+    "dialect": "postgres"
   }
 }
