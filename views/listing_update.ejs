@@ -28,18 +28,21 @@
   font-size:14pt;
 }
   </style>
+  <link rel="stylesheet" href="/stylesheets/style.css" media="screen" title="no title">
+  <link rel="stylesheet" href="/stylesheets/home.css" media="screen" title="no title">
+  <link rel="stylesheet" href="/stylesheets/admin.css" media="screen" title="no title">
 </head>
   <body>
 
-
+<div class="form-content">
     <form action="/listings/updated/<%= listing.id %>" method="post">
-        <input  type="text" name="name" value="<%= listing.name %>"/>
-        <input id="textboxid"  type="text"  name="description" value="<%= listing.description %>"/>
-        <input  type="text" type="number" name="price" value="<%= listing.price %>" />
-        <input  type="text" name="image" value="<%= listing.image %>"/>
-      <input type="submit" value="Update Listing" />
+        <input class="text-form" size="100" type="text" name="name" value="<%= listing.name %>"/>
+        <input id="textboxid" class="text-form" size="100" type="text"  name="description" value="<%= listing.description %>"/>
+        <input size="100" class="text-form price-form" type="text" type="number" name="price" value="<%= listing.price %>" />
+        <input class="text-form" size="100" type="text" name="image" value="<%= listing.image %>"/>
+      <input class="button" size="100" type="submit" value="Update Listing" />
     </form>
-
+</div>
 
   </body>
 
