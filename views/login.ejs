@@ -6,8 +6,8 @@
   <body>
     <% include ./partials/header.ejs %>
     <form action="/login" method="post">
-      <input placeholder="Email" type="email" name='email'/>
-      <input placeholder="Password" name='password'/>
+      <input placeholder="Email" type="email" name='email' required/>
+      <input placeholder="Password" name='password' required/>
       <input class="submit" type='submit' value='Login'/>
     </form>
   </body>

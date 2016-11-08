@@ -7,14 +7,22 @@
 
   <% include ./partials/header.ejs %>
   <style>
-    #textboxid {
-      height:200px;
+    #textboxenquery {
+      height:150px;
       font-size:14pt;
+      color: grey;
     }
-
+    #textboxbook{
+      height:30px;
+      font-size:14pt;
+      color: grey;
+    }
+    }
     body {
       text-align: center;
+      color: grey;
     }
+
 
     .content {
       text-align: left;
@@ -24,8 +32,11 @@
       padding: 50px;
       border-color: #c1c1c1;
       border-width: 1px;
+      color: grey;
     }
-
+    .book {
+      color: #ff5a60;
+    }
     .image {
       margin-top: -50px;
       margin-left: -50px;
@@ -33,11 +44,12 @@
   </style>
 </head>
 <body>
+  <div>
   <h1><%= listing.location %></h1>
   <article class="content">
     <div class="listing">
       <div class="image">
-        <img src=<%= listing.image %> height="350" width="500">
+        <img src="<%= listing.image %>" height="500" width="700">
       </div>
       <div class="title">
         <h2><%= listing.name %></h2>
@@ -49,25 +61,28 @@
         <p>£<%= listing.price %>/night</p>
       </div>
     </div>
-
-    Send a booking request online:
-    <form action="/listings/book/<%= listing.id %>" method="post">
-      <input placeholder="dd/mm/yyyy" type="text"  name="checkin">
-      <input placeholder="dd/mm/yyyy" type="text"  name="checkout">
-      <input type="submit" value="Book">
+  </div>
+  <div>
+    <h1 class="book" >Send a booking request online:</h1>
+    <form style="margin-right: 50%;" action="/listings/book/<%= listing.id %>" method="post">
+      <input id="textboxbook" placeholder="dd/mm/yyyy" type="text"  name="checkin" required>
+      <input id="textboxbook" placeholder="dd/mm/yyyy" type="text"  name="checkout" required>
+      <input style="margin-left: 20%" class="buttons" type="submit" value="Book">
     </form>
+  </div>
+  <div>
+    <br><br><br><br><br><br><h2 style="margin-right:30%; color: grey">Or send us an e-mail with your booking dates or enquery</h2>
 
-    <h2>Or send us an e-mail with your booking dates or enquery</h2>
-
-    <form action="mailto:<%= user.email %>" method="post" enctype="text/plain">
+    <form style="margin-right: 50%;" action="mailto:<%= user.email %>" method="post" enctype="text/plain">
       <input placeholder="Name"type="text" name="name"><br>
       <input placeholder="E-mail"type="text" name="mail"><br>
-      <input id="textboxid" placeholder="Booking"type="text" name="comment" size="50"><br><br>
-      <input type="submit" value="Book">
-      <input type="reset" value="Reset">
+      <input id="textboxenquery" type="text" name="comment" size="50"><br><br>
+      <input class="buttons" type="submit" value="Send">
+      <input class="buttons" type="reset" value="Reset">
     </form>
+    </div>
       <% include ./partials/footer.ejs %>
-  </article>
+
 
 
 

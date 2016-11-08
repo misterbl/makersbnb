@@ -6,50 +6,73 @@
     <link rel="stylesheet" href="/stylesheets/home.css" media="screen" title="no title">
     <link rel="stylesheet" href="/stylesheets/admin.css" media="screen" title="no title">
     <script src="javascripts/auth.js"></script>
+    <script>
+    function deleteConfirmation() {
+        alert("Booking deleted!");
+    }
+    </script>
     <% include ./partials/header.ejs %>
   </head>
 
   <body>
-
+    <div class="greeting">
+      <h2 style="font-size: 2em">Welcome back <%= user.firstname %>!</h2><br>
+    </div>
+    <div>
+      <% if (listings.length > 0) { %>
+      <h2 id="colorful" style="font-size: 3em">Your current listings:</h2>
       <% listings.forEach(function(listing) { %>
-    <ul style="list-style: none;">
-      <ol> <img height="25%" width="25%" src=<%= listing.image %>></ol>
-      <ol><%= listing.name %></ol><br>
-      <ol>Description:<br><%= listing.description %></ol><br>
-      <ol>price per night: £<%= listing.price %></ol>
-      <ol><form action="/listings/update/<%= listing.id %>">
-        <input class="submit" type="submit" value="Update" />
+        <div class="single-listing">
+          <a href="/listings/view/<%= listing.id %>">
+          <div class="image">
+            <img src=<%= listing.dataValues.image %> height="175" width="250">
+          </div>
+          </a>
+          <div class="text-content">
+            <div class="title">
+              <h3><%= listing.dataValues.name %></h3>
+            </div>
+            <div class="price">
+              <h3>£<%= listing.dataValues.price %>/night</h3>
+            </div>
+          </div>
+        </div>
+      <ol style="margin-right:30em"><form action="/listings/update/<%= listing.id %>">
+        <input class="buttons" type="submit" value="Update" />
       </form></ol>
       <ol><form action="/listings/delete/<%= listing.id %>">
-        <input class="submit" type="submit" value="Delete" />
-      </form></ol>
+        <input class="buttons" type="submit" value="Delete" />
+      </form></ol><br><br><br><br>
     </ul>
       <% }); %>
+      <% } %>
+    </div>
     <div>
-      <h2>My current bookings made</h2>
+      <% if (bookings.length > 0) { %>
+      <br><br><h2 id="colorful">My current bookings made:</h2>
       <% bookings.forEach(function(booking) { %>
-      <ul style="list-style: none;">
-        <ol><%= booking.listing_id %></ol><br>
-        <ol>from<%= booking.checkin %></ol>
-        <ol>to <%= booking.checkout %></ol>
-        <ol>price per night: £<%= booking.price %></ol>
+      <ul class="single-booking"style="list-style: none;">
+        <ol><p>Listing number: <%= booking.listing_id %>.     From <%= booking.checkin %> to <%= booking.checkout %>  </p></ol>
         <ol><% if(booking.accepted){ %>
-        <p> booking accepted, you will soon receive a confirmation email</p>
+        <p>Booking accepted. You will soon receive a confirmation email</p>
           <% } else if (booking.accepted === false) { %>
-        <p> booking declined, you will soon receive an explanation email</p>
+        <p>Booking declined. You will soon receive an explanation email</p>
           <% } else { %>
-        <p> booking's acceptation pending</p>
+        <p>Booking's acceptation pending</p>
           <% } %>
         </ol>
-      </ul>
+        <form style="margin-left: 30%"method="post" action="/booking/delete/<%= booking.id %>">
+        <input class="buttons" type="submit" value="Delete Booking" onclick="deleteConfirmation()" />
+        </form>
+      </ul><br>
     <% }); %>
-  </div>
+    <% }; %>
+  </div><br>
+  <div style="margin-right:58em">
   <form action="/user/my_account/requests" method="post">
-    <input type="submit" value="My requests" />
+    <input class="buttons"type="submit" value="My requests" />
   </form>
-    <div class="greeting">
-      <h2>Welcome back <%= user.firstname %>. This is your admin page.</h2>
-    </div>
+</div><br><br><br>
     <div id="colorful">
       <h1> Add a new listing </h1>
     </div>
