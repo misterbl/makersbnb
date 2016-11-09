@@ -79,6 +79,7 @@ router.post('/book/:listing_id', function(req, res) {
   var listing;
   var user;
   var booking;
+  if (sess.email) {
   models.Booking.create({
     checkin: req.body.checkin,
     checkout:req.body.checkout,
@@ -95,6 +96,10 @@ router.post('/book/:listing_id', function(req, res) {
   //   res.render('listing', {listing: listing, user: user});});
   });
     });
+  }
+  else {
+    res.render ('needlogin');
+  }
       });
 
 
